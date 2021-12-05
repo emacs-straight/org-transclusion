@@ -1,5 +1,24 @@
 ;;; org-transclusion-src-lines.el --- Extension -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2021  Free Software Foundation, Inc.
+
+;; This program is free software: you can redistribute it and/or modify it
+;; under the terms of the GNU General Public License as published by the
+;; Free Software Foundation, either version 3 of the License, or (at your
+;; option) any later version.
+
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License along
+;; with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;; Author: Noboru Ota <me@nobiot.com>
+;; Created: 24 May 2021
+;; Last modified: 4 December 2021
+
 ;;; Commentary:
 ;;  This is an extension to `org-transclusion'.  When active, it adds features
 ;;  for non-Org files such as program source and text files
@@ -9,7 +28,9 @@
 (require 'org-element)
 (declare-function text-clone-make-overlay 'text-clone)
 (declare-function org-transclusion-live-sync-buffers-others-default
-                  'org-transclusion)
+                  "org-transclusion")
+(declare-function org-transclusion-org-file-p
+                  "org-transclusion")
 
 ;;;; Setting up the extension
 

@@ -1,15 +1,6 @@
 ;;; org-transclusion.el --- transclude text contents of linked target -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2020-21 Noboru Ota
-
-;; Author: Noboru Ota <me@nobiot.com>
-;; URL: https://github.com/nobiot/org-transclusion
-;; Keywords: org-mode, transclusion, writing
-
-;; Version: 0.2.2
-;; Package-Requires: ((emacs "27.1") (org "9.4"))
-
-;; This file is not part of GNU Emacs.
+;; Copyright (C) 2021  Free Software Foundation, Inc.
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -24,20 +15,23 @@
 ;; You should have received a copy of the GNU General Public License along
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; Author: Noboru Ota <me@nobiot.com>
+;; Created: 10 Oct 2020
+;; Last modified: 4 December 2021
+
+;; URL: https://github.com/nobiot/org-transclusion
+;; Keywords: org-mode, transclusion, writing
+
+;; Version: 1.0.0
+;; Package-Requires: ((emacs "27.1") (org "9.4"))
+
+;; This file is not part of GNU Emacs.
+
 ;;; Commentary:
 
 ;; This library is an attempt to enable transclusion with Org Mode.
 ;; Transclusion is the ability to include content from one file into
 ;; another by reference.
-
-;; It is still VERY experimental.  As it modifies your files (notes), use
-;; it with care.  The author and contributors cannot be held responsible
-;; for loss of important work.
-
-;; Org-transclusion is a buffer-local minor mode.  It is suggested to set a
-;; keybinding like this to make it easy to toggle it:
-;;     (define-key global-map (kbd "<f12>") #'org-transclusion-add)
-;;     (define-key global-map (kbd "C-c n t") #'org-transclusion-mode)
 
 ;;; Code:
 
@@ -50,7 +44,8 @@
 (require 'text-property-search)
 (require 'seq)
 (declare-function org-translusion-indent-add-properties
-                  org-transclusion-indent-mode)
+                  "org-transclusion-indent-mode")
+(defvar org-indent-mode)
 
 ;;;; Customization
 
@@ -75,7 +70,7 @@ Intended for :set property for `customize'."
   '(set :greedy t
         (const :tag "src-lines: Add :src and :lines for non-Org files" org-transclusion-src-lines)
 
-        (const :tag "indent-mode: Support org-indent-mode"org-transclusion-indent-mode)
+        (const :tag "indent-mode: Support org-indent-mode" org-transclusion-indent-mode)
         (repeat :tag "Other packages" :inline t (symbol :tag "Package"))))
 
 (defcustom org-transclusion-add-all-on-activate t
@@ -1361,9 +1356,9 @@ It is intended to be used for `org-transclusion-open-source' and
 
 This function relies on `org-transclusion-find-source-marker' to
 locate the position in the source buffer; thus, the same
-limitation applies. It depends on which org elements whether or
+limitation applies.  It depends on which org elements whether or
 not this function can identify the beginnning of the element at
-point. If it cannot, it will return the beginning of the
+point.  If it cannot, it will return the beginning of the
 transclusion, which can be far away from the element at point, if
 the transcluded region is large."
   (let* ((tc-elem (org-element-context))
