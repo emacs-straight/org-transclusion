@@ -15,9 +15,9 @@
 ;; You should have received a copy of the GNU General Public License along
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; Author: Noboru Ota <me@nobiot.com>
-;; Created: 10 Oct 2020
-;; Last modified: 24 December 2021
+;; Author:        Noboru Ota <me@nobiot.com>
+;; Created:       10 October 2020
+;; Last modified: 26 December 2021
 
 ;; URL: https://github.com/nobiot/org-transclusion
 ;; Keywords: org-mode, transclusion, writing
@@ -325,6 +325,8 @@ and variables."
   (add-hook 'after-save-hook #'org-transclusion-after-save-buffer nil t)
   (add-hook 'kill-buffer-hook #'org-transclusion-before-kill nil t)
   (add-hook 'kill-emacs-hook #'org-transclusion-before-kill nil t)
+  (add-hook 'org-export-before-processing-hook
+            #'org-transclusion-inhibit-read-only nil t)
   (org-transclusion-yank-excluded-properties-set)
   (org-transclusion-load-extensions-maybe))
 
@@ -337,6 +339,8 @@ This function also removes all the transclusions in the current buffer."
   (remove-hook 'after-save-hook #'org-transclusion-after-save-buffer t)
   (remove-hook 'kill-buffer-hook #'org-transclusion-before-kill t)
   (remove-hook 'kill-emacs-hook #'org-transclusion-before-kill t)
+  (remove-hook 'org-export-before-processing-hook
+               #'org-transclusion-inhibit-read-only t)
   (org-transclusion-yank-excluded-properties-remove))
 
 ;;;###autoload
@@ -488,7 +492,10 @@ the rest of the buffer unchanged."
                       (plist-get (org-transclusion-keyword-string-to-plist)
                                  :disable-auto))
             ;; Demoted-errors so that one error does not stop the whole process
-            (with-demoted-errors (org-transclusion-add)))))
+            (with-demoted-errors
+                "Not transcluded. Continue to next: %S"
+              (when (org-transclusion-add)
+                (message (format "Transcluded at point %d, line %d" (point) (org-current-line))))))))
       (goto-char marker)
       (move-marker marker nil) ; point nowhere for GC
       t)))
@@ -1309,12 +1316,12 @@ Case 2. #+transclude inside another transclusion"
    ((let ((elm (org-element-at-point)))
       (not (and (string= "keyword" (org-element-type elm))
                 (string= "TRANSCLUDE" (org-element-property :key elm)))))
-    (user-error (format "Not at a transclude keyword at point %d, line %d"
+    (user-error (format "Not at a transclude keyword or transclusion in a block at point %d, line %d"
                         (point) (org-current-line))))
    ;; Case 2. #+transclude inside another transclusion
    ((org-transclusion-within-transclusion-p)
-    (user-error (format "Cannot transclude in another transclusion at point %d, line %d")
-                (point) (org-current-line)))
+    (user-error (format "Cannot transclude in another transclusion at point %d, line %d"
+                        (point) (org-current-line))))
    (t
     t)))
 
@@ -1694,6 +1701,17 @@ When DEMOTE is non-nil, demote."
             (if demote (org-demote-subtree) (org-promote-subtree))
             (org-transclusion-promote-adjust-after)))
         (goto-char pos)))))
+
+;;-----------------------------------------------------------------------------
+;;;; Functions to support Org-export
+
+(defun org-transclusion-inhibit-read-only (&rest _args)
+  "Set `inhibit-read-only' to t for Org export functions.
+Org export may need the buffer not to contain read-only elements.
+This function is meant to be added to
+`org-export-before-processing-hook' to temporarily inhibit
+read-only."
+  (setq-local inhibit-read-only t))
 
 ;;-----------------------------------------------------------------------------
 ;;;; Functions for extensions

@@ -3,4 +3,7 @@ docs
 resources
 Makefile
 .gitignore
+.elpaignore
 text-clone-docs
+.dir-locals.el
+org-transclusion.org
