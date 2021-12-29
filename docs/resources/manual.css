@@ -7,14 +7,18 @@
 }
 
 body {
-    margin: 5ex 10ex;
-    max-width: 80ex;
+    margin: 5ex auto;
+    max-width: 850px;
     line-height: 1.5;
     font-family: sans-serif;
 }
 
 h1, h2, h3 {
     font-weight: normal;
+}
+
+.settitle {
+    display: none;
 }
 
 pre, code {

@@ -17,7 +17,7 @@
 
 ;; Author:        Noboru Ota <me@nobiot.com>
 ;; Created:       10 October 2020
-;; Last modified: 26 December 2021
+;; Last modified: 28 December 2021
 
 ;; URL: https://github.com/nobiot/org-transclusion
 ;; Keywords: org-mode, transclusion, writing
@@ -53,7 +53,8 @@
   "Insert text contents by way of link references."
   :group 'org
   :prefix "org-transclusion-"
-  :link '(url-link :tag "Github" "https://github.com/nobiot/org-transclusion"))
+  :link '(url-link :tag "Github" "https://github.com/nobiot/org-transclusion")
+  :package-version '("Org-transclusion" . "1.0.0"))
 
 (defun org-transclusion-set-extensions (var value)
   "Set VAR to VALUE and `org-transclusion-load-extensions-maybe'.
@@ -62,10 +63,9 @@ Intended for :set property for `customize'."
   (when (featurep 'org-transclusion)
     (org-transclusion-load-extensions-maybe 'force)))
 
-(defcustom org-transclusion-extensions '(org-transclusion-src-lines)
+ (defcustom org-transclusion-extensions '(org-transclusion-src-lines)
   "Extensions to be loaded with org-transclusion.el."
-  :group 'org-transclusion
-  :set 'org-transclusion-set-extensions
+  :set #'org-transclusion-set-extensions
   :type
   '(set :greedy t
         (const :tag "src-lines: Add :src and :lines for non-Org files" org-transclusion-src-lines)
@@ -77,37 +77,32 @@ Intended for :set property for `customize'."
 (defcustom org-transclusion-add-all-on-activate t
   "Define whether to add all the transclusions on activation.
 When non-nil, automatically add all on `org-transclusion-activate'."
-  :type 'boolean
-  :group 'org-transclusion)
+  :type 'boolean)
 
 (defcustom org-transclusion-exclude-elements (list 'property-drawer)
   "Define the Org elements that are excluded from transcluded copies.
 It is a list of elements to be filtered out.
 Refer to variable `org-element-all-elements' for names of elements accepted."
-  :type '(repeat symbol)
-  :group 'org-transclusion)
+  :type '(repeat symbol))
 
 (defcustom org-transclusion-include-first-section t
   "Define whether or not transclusion for Org files includes \"first section\".
 If t, the section before the first headline is
 transcluded. Default is t."
-  :type 'boolean
-  :group 'org-transclusion)
+  :type 'boolean)
 
 (defcustom org-transclusion-open-source-display-action-list '(nil . nil)
   "Action list used to open source buffer to display.
 
 See `display-buffer' for example options."
   :type display-buffer--action-custom-type
-  :risky t
-  :group 'org-transclusion)
+  :risky t)
 
 (defcustom org-transclusion-mode-lighter
   " OT"
   "Mode-line indicator for minor-mode variable `org-transclusion-mode'."
   :type '(choice (const :tag "No lighter" "") string)
-  :safe 'stringp
-  :group 'org-transclusion)
+  :safe 'stringp)
 
 ;;;; Faces
 
@@ -115,54 +110,43 @@ See `display-buffer' for example options."
   '((((class color) (min-colors 88) (background light)))
     (((class color) (min-colors 88) (background dark)))
     (t ))
-  "Face for source region's fringe being transcluded in another buffer."
-  :group 'org-transclusion)
-
-(defface org-transclusion-source
+  "Face for source region's fringe being transcluded in another buffer.")
+ (defface org-transclusion-source
   '((((class color) (min-colors 88) (background light))
      :background "#ebf6fa" :extend t)
     (((class color) (min-colors 88) (background dark))
      :background "#041529" :extend t)
     (t
      :foreground "darkgray"))
-  "Face for source region being transcluded in another buffer."
-  :group 'org-transclusion)
-
-(defface org-transclusion-source-edit
+  "Face for source region being transcluded in another buffer.")
+ (defface org-transclusion-source-edit
   '((((class color) (min-colors 88) (background light))
      :background "#fff3da" :extend t)
     (((class color) (min-colors 88) (background dark))
      :background "#221000" :extend t)
     (t
      :background "chocolate4" :extend t))
-  "Face for element in the source being edited by another buffer."
-  :group 'org-transclusion)
-
-(defface org-transclusion-fringe
+  "Face for element in the source being edited by another buffer.")
+ (defface org-transclusion-fringe
   '((((class color) (min-colors 88) (background light)))
     (((class color) (min-colors 88) (background dark)))
     (t ))
-  "Face for transcluded region's fringe in the transcluding buffer."
-  :group 'org-transclusion)
-
-(defface org-transclusion
+  "Face for transcluded region's fringe in the transcluding buffer.")
+ (defface org-transclusion
   '((((class color) (min-colors 88) (background light))
      :background "#ebf6fa" :extend t)
     (((class color) (min-colors 88) (background dark))
      :background "#041529" :extend t)
     (t ))
-  "Face for transcluded region in the transcluding buffer."
-  :group 'org-transclusion)
-
-(defface org-transclusion-edit
+  "Face for transcluded region in the transcluding buffer.")
+ (defface org-transclusion-edit
   '((((class color) (min-colors 88) (background light))
      :background "#ebf6fa" :extend t)
     (((class color) (min-colors 88) (background dark))
      :background "#041529" :extend t)
     (t
      :background "forest green" :extend t))
-  "Face for element in the transcluding buffer in the edit mode."
-  :group 'org-transclusion)
+  "Face for element in the transcluding buffer in the edit mode.")
 
 ;;;; Variables
 
@@ -284,19 +268,12 @@ specific keybindings; namely:
 ;;;; Macro
 ;;;; Definining macros before they are used in the rest of package
 ;;;; Flycheck warns with "macro X defined too late"
-(defmacro org-transclusion-with-silent-modifications (&rest body)
-  "Run BODY silently.
-It's like `with-silent-modifications' but keeps the undo list."
+(defmacro org-transclusion-with-inhibit-read-only (&rest body)
+  "Run BODY with `'inhibit-read-only` t."
   (declare (debug t) (indent 0))
-  (let ((modified (make-symbol "modified")))
-    `(let* ((,modified (buffer-modified-p))
-            (inhibit-read-only t)
-            (inhibit-modification-hooks t))
-       (unwind-protect
-           (progn
-             ,@body)
-         (unless ,modified
-           (restore-buffer-modified-p nil))))))
+  `(let* ((inhibit-read-only t))
+     (progn
+           ,@body)))
 
 ;;;; Commands
 
@@ -449,7 +426,7 @@ does not support all the elements.
                   nil))
         (let ((beg (point))
               (end))
-          (org-transclusion-with-silent-modifications
+          (org-transclusion-with-inhibit-read-only
             (when (save-excursion
                     (end-of-line) (insert-char ?\n)
                     (org-transclusion-content-insert
@@ -529,7 +506,7 @@ When success, return the beginning point of the keyword re-inserted."
           (when (org-transclusion-within-live-sync-p)
             (org-transclusion-live-sync-exit))
           (delete-overlay tc-pair-ov)
-          (org-transclusion-with-silent-modifications
+          (org-transclusion-with-inhibit-read-only
             (save-excursion
               (delete-region beg end)
               (when (> indent 0) (indent-to indent))
@@ -574,9 +551,8 @@ the rest of the buffer unchanged."
       (goto-char (point-min))
       (while (setq match (text-property-search-forward 'org-transclusion-type))
         (goto-char (prop-match-beginning match))
-        (org-transclusion-with-silent-modifications
-          (setq point (org-transclusion-remove))
-          (when point (push point list))))
+        (setq point (org-transclusion-remove))
+        (when point (push point list)))
       (goto-char marker)
       (move-marker marker nil) ; point nowhere for GC
       list)))
@@ -747,6 +723,9 @@ set in `before-save-hook'.  It also move the point back to
           (save-excursion
             (goto-char p)
             (org-transclusion-add)))
+        ;; After save and adding all transclusions, the modified flag should be
+        ;; set to nil
+        (restore-buffer-modified-p nil)
         (when org-transclusion-remember-point
           (goto-char org-transclusion-remember-point))
     (progn
