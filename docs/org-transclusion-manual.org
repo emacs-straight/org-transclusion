@@ -1,7 +1,7 @@
 #+title: Org-transclusion User Manual
 #+author: Noboru Ota <me@nobiot.com>
-#+macro: version 1.0.x
-#+macro: modified 26 December 2021
+#+macro: version 1.1.x
+#+macro: modified 29 December 2021
 
 #+language: en
 #+export_file_name: org-transclusion.texi
@@ -10,14 +10,14 @@
 #+texinfo_dir_desc: Transclusion in Org mode
 #+texinfo: @paragraphindent asis
 
-#+options: toc:nil
+#+options: toc:nil ':t
 
 #+html: <a href="https://www.gnu.org/software/emacs/"><img alt="GNU Emacs" src="https://img.shields.io/static/v1?logo=gnuemacs&logoColor=fafafa&label=Made%20for&message=GNU%20Emacs&color=7F5AB6&style=flat"/></a>
 #+html: <a href="http://elpa.gnu.org/packages/org-transclusion.html"><img alt="GNU ELPA" src="https://elpa.gnu.org/packages/org-transclusion.svg"/></a>
 #+html: <a href="http://elpa.gnu.org/devel/org-transclusion.html"><img alt="GNU-devel ELPA" src="https://elpa.gnu.org/devel/org-transclusion.svg"/></a>
 #+html: <img alt="GPLv3" src="https://img.shields.io/badge/License-GPLv3-blue.svg">
 
-This manual is for Org-transclusion {{{version}}}.
+This manual is for Org-transclusion version {{{version}}}.
 
 Last updated: {{{modified}}}.
 
@@ -47,7 +47,6 @@ modify this GNU manual.”
 * Example Use Cases & Main Features
 
 #+transclude: [[../README.org::#use-cases]] :only-contents 
-
 
 * Installation
 
@@ -93,9 +92,11 @@ Put your cursor somewhere on this keyword line and type =M-x org-transclusion-ad
 
 Alternatively, you can also put cursor somewhere on the link and type  =M-x org-transclusion-make-from-link RET=. That will insert another line with =#+transclusion:= keyword added in front of a copy of the original link in the next empty line.
 
-The transcluded text is *read-only* but you can copy it and export it as normal text. Org-transclusion remembers where it has transcluded the text from (its source buffer).  You can call a number of useful commands with a single letter (by default).
+The transcluded paragraphs will be visually marked with a vertical line "| " in the fringe (on graphical display) or in the beginning of line (on a text-only terminal) by default. The source (original) of the transcluded paragraphs will be also visually marked with an overlay. The appearance of these visual elements can be customized (refer to section [[#faces][Faces & fringe bitmap]]).
 
-For example, you can press =o= to open the source buffer of the transclusion at point, or =O= (capital "o") to open and move to it. Press =g= to refresh the transclusion. Press =e= to start live-sync edit. For more detail, inspect the documentation of each command. Press =d= to remove the transcluded content, putting the original =#+transclude: [[id:id-of-the-content]]=.
+The transcluded text is *read-only* but you can copy it and export it as normal text. Org-transclusion remembers where it has transcluded the text from (its source buffer).
+
+You can call a number of useful commands with a single letter (by default). For example, you can press =o= to open the source buffer of the transclusion at point, or =O= (capital "o") to open and move to it. Press =g= to refresh the transclusion. Press =e= to start live-sync edit. For more detail, inspect the documentation of each command. Press =d= to remove the transcluded content, putting the original =#+transclude: [[id:id-of-the-content]]=.
 
 This single-letter-context-menu is defined in =org-transclusion-map=. The default keybindings are shown below. Adapt them to your liking, especially if you use Vim keybindings with Evil Mode, etc.
 
@@ -132,7 +133,7 @@ This should get you started with Org-transclusion. There are more options and cu
 #+findex: org-transclusion-mode
 #+findex: org-transclusion-activate
 #+findex: org-transclusion-deactivate
-#+cindex: Transclusion Properties
+#+cindex: Properties
 #+cindex: Property - :disable-auto
 #+vindex: org-transclusion-add-all-on-activate
 
@@ -152,7 +153,7 @@ You can control whether or not transclusions are to be added automatically per t
 #+transclude: [[file:path/to/file.org]] :disable-auto
 #+end_example
 
-You can override the =:disable-auto= property by manually calling =org-transclusion-add= at point.
+You can override the =:disable-auto= property by manually calling =org-transclusion-add= at point. There are various properties like =:disable-auto= to control each transclusion (refer to [[#cindex][Index - Features]] for a list).
 
 ** Org links supported
 :PROPERTIES:
@@ -207,7 +208,7 @@ Use the =:level= property with a value of single digit number from 1 to 9 like t
 #+transclude: [[file:path/to/file.org::*Headline]] :level 2
 #+end_example
 
-The top level of the transcluded headline will set to the value of =:level= property -- in this example, level 2 regardless of that in the source. When the headline contains sub-headlines, they will be all automatically promoted or demoted to align according to how many levels the top of the subtree will move.
+The top level of the transcluded headline will be set to the value of =:level= property -- in this example, level 2 regardless of that in the source. When the headline contains sub-headlines, they will be all automatically promoted or demoted to align according to how many levels the top of the subtree will move.
 
 When you transclude an entire Org file, it may contain multiple subtrees. In such cases, the top-most level among the subtrees will be set according to the =:level= property; the rest of headlines in the buffer will align accordingly.
 
@@ -371,7 +372,7 @@ The source block will have the additional properties:
 
 This feature is provided as an [[#extensions][extension]] (default on). 
 
-When you transclude text files other than Org files, 
+When you transclude text files other than Org files, you can use following properties to specify a range of lines to transclude.
 
 *** =:lines= property to specify a range of lines
 
@@ -387,9 +388,9 @@ The rage is specified by the number "3-5"; in this case, lines from 3 to 5, both
 
 To transclude a single line, have the the same number in both places (e.g. 10-10, meaning line 10 only).
 
-One of the numbers can be omitted.  When the first number is omitted (e.g. -10), it means from the beginning of the file to line 10. Likewise, when the second number is omitted (e.g. 10-), it means from line 10 to the end of file.
+One of the numbers can be omitted. When the first number is omitted (e.g. -10), it means from the beginning of the file to line 10. Likewise, when the second number is omitted (e.g. 10-), it means from line 10 to the end of file.
 
-You can combine the =:lines= property with the =:src= property to transclude only a certain range of source files (Example 1 below).
+You can combine =:lines= with =:src= to transclude only a certain range of source files (Example 1 below).
 
 For Org's file links, you can use [[https://orgmode.org/manual/Search-Options.html][search options]] specified by the "::" (two colons) notation. When a search finds a line that includes the string, the Org-transclude counts it as the starting line 1 for the  =:lines= property.
 
@@ -403,7 +404,10 @@ Example 2: This transcludes only the single line that contains the line found by
 #+transclude: [[file:../../test/test.txt::Transcendental Ontology]] :lines 1-1
 #+end_example
 
-Note search-options =::/regex/= and =::number= do not work as intended.
+#+ATTR_TEXINFO: :tag Note
+#+begin_quote
+Search-options =::/regex/= and =::number= do not work as intended.
+#+end_quote
 
 *** =:end= property to specify a search term to dynamically look for the end of a range
 
@@ -411,9 +415,9 @@ Note search-options =::/regex/= and =::number= do not work as intended.
 
 You can add =:end= property and specify the search term as its value. Surround the search term with double quotation marks (mandatory).
 
-See Example 3 below. This transclusion will look for =id-1234= as the beginning line of the range as specified by the search option =::id-1234= in the link. With the =:end= property, the search term =id-1234 end here= defines the end of the range. The search looks for =id-123 end here= in the body text, and use the line one before the one where the text is find (thus, the transcluded range will not contain =id-1234 end here=).
+See Example 3 below. This transclusion will look for =id-1234= as the beginning line of the range as specified by the search option =::id-1234= in the link. With the =:end= property, the search string =id-1234 end here= defines the end of the range. The search looks for =id-123 end here= in the body text. When found, the line one before the search string is used as the ending line (thus, the transcluded range will not contain string =id-1234 end here=).
 
-You can also combined =:lines= property with =:end= property.  It will only displace the beginning, and the end part of the range (the second number after the hyphen "-")  is ignored. In the same example, the beginning of the range is the one line after the line where "id-1234" is found; it's the "second line, or line 2".  Instead of transcluding until the end of the buffer, the end is defined by the =:end= property.
+You can also combine =:lines= with =:end=.  It will only displace the beginning, and the end part of the range (the second number after the hyphen "-") is ignored. In the same example, the beginning of the range is the next line after "id-1234" (line 2).  Instead of transcluding all the text until the end of the buffer, the end is defined by the =:end= property (one line before the string =id-1234 end here= is found).
 
 Example 3:
 #+begin_example
@@ -468,7 +472,7 @@ You can customize settings in the =org-transclusion= group.
 
 - =org-transclusion-extensions= :: Defines extensions to be loaded with
   org-transclusion.el. If you use =customize=, the extensions are loaded by it.
-  If you don't, you likely need to explicitly use =require= to load them. See [[#extensions][seb-section]]
+  If you don't, you likely need to explicitly use =require= to load them. See [[#extensions][sub-section]]
 
 - =org-transclusion-add-all-on-activate= :: Defines whether or not all the
   active transclusions (with =t=) get automatically transcluded on minor mode
@@ -514,6 +518,9 @@ You can also fine-tune the exclusion filter per transclusion. Refer to the sub-s
 You can include the first section (section before the first headline) of an Org file. It is toggled via customizable variable =org-transclusion-include-first-section=. Its default value is =t=. Set it to =t= (or non-nil) to transclude the first section. It also works when the first section is followed by headlines.
 
 ** Faces & fringe bitmap
+:PROPERTIES:
+:CUSTOM_ID: faces
+:END:
 
 #+vindex: org-transclusion-keyword
 #+vindex: org-transclusion-source-fringe
@@ -556,7 +563,7 @@ Other faces:
 - =org-transclusion=
 - =org-transclusion-edit=
 - =org-transclusion-fringe-bitmap= ::
-  It is used for the fringe that indicates the transcluded region. It works only in a graphical environment (not in terminal).
+  It is used for the fringe that indicates the transcluded region. It works only in on a graphical display (not on a text-only terminal).
 
 ** Keybindings
 #+vindex: org-transclusion-map
@@ -636,9 +643,9 @@ It seems like this could work well for headlines, and named tables, src blocks, 
 
 #+transclude: [[../README.org::*Contributing]] :only-contents 
 
-
 * Index - Features
 :PROPERTIES:
+:CUSTOM_ID: cindex
 :APPENDIX: t
 :INDEX:    cp
 :DESCRIPTION: Key concepts & features

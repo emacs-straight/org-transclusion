@@ -17,12 +17,12 @@
 
 ;; Author:        Noboru Ota <me@nobiot.com>
 ;; Created:       10 October 2020
-;; Last modified: 28 December 2021
+;; Last modified: 29 December 2021
 
 ;; URL: https://github.com/nobiot/org-transclusion
 ;; Keywords: org-mode, transclusion, writing
 
-;; Version: 1.0.1
+;; Version: 1.1.0
 ;; Package-Requires: ((emacs "27.1") (org "9.4"))
 
 ;; This file is not part of GNU Emacs.
@@ -271,9 +271,14 @@ specific keybindings; namely:
 (defmacro org-transclusion-with-inhibit-read-only (&rest body)
   "Run BODY with `'inhibit-read-only` t."
   (declare (debug t) (indent 0))
-  `(let* ((inhibit-read-only t))
-     (progn
-           ,@body)))
+  (let ((modified (make-symbol "modified")))
+    `(let* ((,modified (buffer-modified-p))
+            (inhibit-read-only t))
+       (unwind-protect
+           (progn
+             ,@body)
+         (unless ,modified
+           (restore-buffer-modified-p nil))))))
 
 ;;;; Commands
 
@@ -736,19 +741,18 @@ set in `before-save-hook'.  It also move the point back to
   "Remove transclusions before `kill-buffer' or `kill-emacs'.
 Intended to be used with `kill-buffer-hook' and `kill-emacs-hook'
 to clear the file of the transcluded text regions.  This function
-also flags the buffer modified and `save-buffer'.  Calling
-`save-buffer' after remove-all and live-sync ensures the clearing
-process to occur.  This is reqiured because during live-sync,
-some hooks that manage the clearing process are temporarily
-turned off (removed)."
+also flags the buffer modified and `save-buffer'.  Calling the
+second `org-transclusion-remove-all' ensures the clearing process
+to occur.  This is reqiured because during live-sync, some hooks
+that manage the clearing process are temporarily turned
+off (removed)."
   ;; Remove transclusions first. To deal with an edge case where transclusions
   ;; were added for a capture buffer -- e.g. `org-capture' or `org-roam-catpure'
   ;; --, check is done for `buffer-file-name' to see if there is a file visited
   ;; by the buffer. If a "temp" buffer, there is no file being visited.
   (when (and (org-transclusion-remove-all)
              (buffer-file-name))
-    (set-buffer-modified-p t)
-    (save-buffer)))
+    (org-transclusion-remove-all)))
 
 ;;;;---------------------------------------------------------------------------
 ;;;; Functions for Transclude Keyword
