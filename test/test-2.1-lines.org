@@ -1,10 +1,17 @@
 Including lines of source code
 
+#+transclude: [[file:./main.jl::id-1234]]  :src julia :end "id-1234 finish"
+
 [[file:../org-transclusion-source-line.el]]
 
 [[file:./paragraph.org::10]]
 
 [[file:./paragraph.org::/Lorem/]]
+
+#+transclude: [[id:2022-06-26T141859]] 
+#+transclude: [[file:./paragraph.org]] :lines 1-5
+#+transclude: [[id:2022-06-26T141859]] :lines 0-5
+#+transclude: [[id:2022-06-26T141859]] :end "Heading 1"
 
 #+name: source code 1
 #+transclude: [[file:../org-transclusion-src-lines.el]] :lines 1-10 :src elisp
@@ -39,11 +46,11 @@ You can use the Org file link's search option with adding "::". The =:lines= opt
 
 #+transclude: [[file:test.txt::/Transcendental Ontology/]]  :end "Idea"
 
-#+transclude: [[file:test.txt::Transcendental Ontology]] 
+#+transclude: [[file:test.txt::Transcendental Ontology]]
 
 This is the next paragraph.
 
-offset before and after 
+offset before and after
 
 * src-blocks
 
