@@ -1,6 +1,6 @@
 ;;; org-transclusion.el --- Transclude text content via links -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021-2023  Free Software Foundation, Inc.
+;; Copyright (C) 2021-2024  Free Software Foundation, Inc.
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -17,7 +17,7 @@
 
 ;; Author:        Noboru Ota <me@nobiot.com>
 ;; Created:       10 October 2020
-;; Last modified: 11 May 2023
+;; Last modified: 14 January 2024
 
 ;; URL: https://github.com/nobiot/org-transclusion
 ;; Keywords: org-mode, transclusion, writing
@@ -177,7 +177,7 @@ a text content.
 `org-transclusion-after-save-buffer' use this variable.")
 
 (defvar-local org-transclusion-remember-window-config nil
-  "Remember window config (the arrangment of windows) for the current buffer.
+  "Remember window config (the arrangement of windows) for the current buffer.
 This is for live-sync.  Analogous to
 `org-edit-src-code'.")
 
@@ -187,13 +187,26 @@ This is for live-sync.  Analogous to
     org-transclusion-add-other-file)
   "Define a list of functions to get a payload for transclusion.
 These function take two arguments: Org link and keyword plist,
-and return a playload.  The payload is defined as a property list
+and return a payload.  The payload is defined as a property list
 that consists of the following properties:
 
 - :tc-type
 - :src-buf
 - :src-beg
-- :src-end")
+- :src-end
+
+Otherwise, the payload may be a named or lambda callback
+function.  In that case, the callback function will be called
+with the following arguments:
+
+- \\+`link'
+- \\+`keyword-plist'
+- \\+`copy'
+
+In order for the transclusion to be inserted into the buffer, the
+callback function should generate a payload plist, then call
+`org-transclusion-add-callback', passing in the payload as well
+as the \\+`link', \\+`keyword-plist', and \\+`copy' arguments.")
 
 (defvar org-transclusion-keyword-value-functions
   '(org-transclusion-keyword-value-link
@@ -271,10 +284,12 @@ specific keybindings; namely:
   nil nil '(center t))
 
 ;;;; Macro
-;;;; Definining macros before they are used in the rest of package
+;;;; Defining macros before they are used in the rest of package
 ;;;; Flycheck warns with "macro X defined too late"
 (defmacro org-transclusion-with-inhibit-read-only (&rest body)
-  "Run BODY with `'inhibit-read-only` t."
+  "Run BODY with `'inhibit-read-only` t.
+This macro is used instead of `with-silent-modifications' because
+Org mode's caching relies upon modification hooks to function."
   (declare (debug t) (indent 0))
   (let ((modified (make-symbol "modified")))
     `(let* ((,modified (buffer-modified-p))
@@ -312,13 +327,15 @@ and variables."
   (add-hook 'after-save-hook #'org-transclusion-after-save-buffer nil t)
   (add-hook 'kill-buffer-hook #'org-transclusion-before-kill nil t)
   (add-hook 'kill-emacs-hook #'org-transclusion-before-kill nil t)
-  (add-hook 'org-export-before-processing-hook
+  (add-hook (if (version< org-version "9.6")
+                'org-export-before-processing-hook
+              'org-export-before-processing-functions)
             #'org-transclusion-inhibit-read-only nil t)
   (org-transclusion-yank-excluded-properties-set)
   (org-transclusion-load-extensions-maybe))
 
 (defun org-transclusion-deactivate ()
-  "Dectivate Org-transclusion hooks and other setups in the current buffer.
+  "Deactivate Org-transclusion hooks and other setups in the current buffer.
 This function also removes all the transclusions in the current buffer."
   (interactive)
   (org-transclusion-remove-all)
@@ -326,7 +343,9 @@ This function also removes all the transclusions in the current buffer."
   (remove-hook 'after-save-hook #'org-transclusion-after-save-buffer t)
   (remove-hook 'kill-buffer-hook #'org-transclusion-before-kill t)
   (remove-hook 'kill-emacs-hook #'org-transclusion-before-kill t)
-  (remove-hook 'org-export-before-processing-hook
+  (remove-hook (if (version< org-version "9.6")
+                   'org-export-before-processing-hook
+                 'org-export-before-processing-functions)
                #'org-transclusion-inhibit-read-only t)
   (org-transclusion-yank-excluded-properties-remove))
 
@@ -358,28 +377,25 @@ transclusion keyword."
   (interactive "P")
   (let* ((context (org-element-lineage
                    (org-element-context)'(link) t))
-         (type (org-element-property :type context))
          (auto-transclude-p (if (or (not arg) (numberp arg)) org-transclusion-mode
                               ;; if `universal-argument' is passed,
                               ;; reverse nil/t when
                               (if org-transclusion-mode nil t))))
-    (when (or (string= type "file")
-              (string= type "id"))
-      (let* ((contents-beg (org-element-property :contents-begin context))
-             (contents-end (org-element-property :contents-end context))
-             (contents (when contents-beg
-                         (buffer-substring-no-properties contents-beg contents-end)))
-             (link (org-element-link-interpreter context contents)))
-        (save-excursion
-          (org-transclusion-search-or-add-next-empty-line)
-          (insert (format "#+transclude: %s\n" link))
-          (forward-line -1)
-          (when (and (numberp arg)
-                     (> arg 0)
-                     (<= arg 9))
-            (end-of-line)
-            (insert (format " :level %d" arg)))
-          (when auto-transclude-p (org-transclusion-add)))))))
+    (let* ((contents-beg (org-element-property :contents-begin context))
+           (contents-end (org-element-property :contents-end context))
+           (contents (when contents-beg
+                       (buffer-substring-no-properties contents-beg contents-end)))
+           (link (org-element-link-interpreter context contents)))
+      (save-excursion
+        (org-transclusion-search-or-add-next-empty-line)
+        (insert (format "#+transclude: %s\n" link))
+        (forward-line -1)
+        (when (and (numberp arg)
+                   (> arg 0)
+                   (<= arg 9))
+          (end-of-line)
+          (insert (format " :level %d" arg)))
+        (when auto-transclude-p (org-transclusion-add))))))
 
 ;;;###autoload
 (defun org-transclusion-add (&optional copy)
@@ -423,37 +439,54 @@ does not support all the elements.
            (link (org-transclusion-wrap-path-to-link
                   (plist-get keyword-plist :link)))
            (payload (run-hook-with-args-until-success
-                     'org-transclusion-add-functions link keyword-plist))
-           (tc-type (plist-get payload :tc-type))
-           (src-buf (plist-get payload :src-buf))
-           (src-beg (plist-get payload :src-beg))
-           (src-end (plist-get payload :src-end))
-           (src-content (plist-get payload :src-content)))
-      (if (or (string= src-content "")
-              (eq src-content nil))
-          ;; Keep going with program when no content `org-transclusion-add-all'
-          ;; should move to the next transclusion
-          (progn (message
-                  (format
-                   "No content found with \"%s\".  Check the link at point %d, line %d"
-                   (org-element-property :raw-link link) (point) (org-current-line))
-                  nil))
-        (let ((beg (line-beginning-position))
-              (end))
-          (org-transclusion-with-inhibit-read-only
-            (when (save-excursion
-                    (end-of-line) (insert-char ?\n)
-                    (org-transclusion-content-insert
-                     keyword-plist tc-type src-content
-                     src-buf src-beg src-end copy)
-                    (unless (eobp) (delete-char 1))
-                    (setq end (point))
-                    t)
-              ;; `org-transclusion-keyword-remove' checks element at point is a
-              ;; keyword or not
-              (org-transclusion-keyword-remove)))
-          (run-hook-with-args 'org-transclusion-after-add-functions beg end))
-        t))))
+                     'org-transclusion-add-functions link keyword-plist)))
+      (if (functionp payload)
+          ;; Allow for asynchronous transclusion
+          (funcall payload link keyword-plist copy)
+        (org-transclusion-add-callback payload link keyword-plist copy)))))
+
+(defun org-transclusion-add-callback (payload link keyword-plist copy)
+  "Insert transcluded content with error handling.
+
+PAYLOAD should be a plist according to the description in
+`org-transclusion-add-functions'.  LINK should be an org-element
+context object for the link.  KEYWORD-PLIST should contain the
+\"#+transclude:\" keywords for the transclusion at point.  With
+non-nil COPY, copy the transcluded content into the buffer.
+
+This function is intended to be called from within
+`org-transclusion-add' as well as callback functions returned by
+functions in `org-transclusion-add-functions'."
+  (let ((tc-type (plist-get payload :tc-type))
+        (src-buf (plist-get payload :src-buf))
+        (src-beg (plist-get payload :src-beg))
+        (src-end (plist-get payload :src-end))
+        (src-content (plist-get payload :src-content)))
+    (if (or (string= src-content "")
+            (eq src-content nil))
+        ;; Keep going with program when no content `org-transclusion-add-all'
+        ;; should move to the next transclusion
+        (progn (message
+                (format
+                 "No content found with \"%s\".  Check the link at point %d, line %d"
+                 (org-element-property :raw-link link) (point) (org-current-line))
+                nil))
+      (let ((beg (line-beginning-position))
+            (end))
+        (org-transclusion-with-inhibit-read-only
+          (when (save-excursion
+                  (end-of-line) (insert-char ?\n)
+                  (org-transclusion-content-insert
+                   keyword-plist tc-type src-content
+                   src-buf src-beg src-end copy)
+                  (unless (eobp) (delete-char 1))
+                  (setq end (point))
+                  t)
+            ;; `org-transclusion-keyword-remove' checks element at point is a
+            ;; keyword or not
+            (org-transclusion-keyword-remove)))
+        (run-hook-with-args 'org-transclusion-after-add-functions beg end))
+      t)))
 
 ;;;###autoload
 (defun org-transclusion-add-all (&optional narrowed)
@@ -693,7 +726,7 @@ a couple of org-transclusion specific keybindings; namely:
 
 (defun org-transclusion-live-sync-exit ()
   "Exit live-sync at point.
-It attemps to re-arrange the windows for the current buffer to
+It attempts to re-arrange the windows for the current buffer to
 the state before live-sync started."
   (interactive)
   (if (not (org-transclusion-within-live-sync-p))
@@ -717,7 +750,7 @@ This is meant to be used within live-sync overlay as part of
 
 ;;;;---------------------------------------------------------------------------
 ;;;; Private Functions
-;;;; Functions for Activate / Deactiveate / save-buffer hooks
+;;;; Functions for Activate / Deactivate / save-buffer hooks
 
 (defun org-transclusion-before-save-buffer ()
   "Remove translusions in `before-save-hook'.
@@ -900,7 +933,7 @@ keyword.  If not, returns nil."
   "Return list of symbols from PLIST when applicable.
 If PLIST does not have :exclude-elements, return nil.
 
-This function also attemps to remove empty string that gets
+This function also attempts to remove empty string that gets
 inserted when more than one space is inserted between symbols."
   (let ((str (plist-get plist :exclude-elements)))
     (when str
@@ -1115,20 +1148,24 @@ This function is intended to be used for Org-ID.  It delates the
 work to
 `org-transclusion-content-org-buffer-or-element'."
   (save-excursion
-    ;; First visit the buffer and go to the relevant elelement if
+    ;; First visit the buffer and go to the relevant element if
     ;; search-option is present.
     (let* ((path (org-element-property :path link))
            (search-option (org-element-property :search-option link))
-           (buf (find-file-noselect path)))
+           (buf (find-file-noselect path))
+           (org-link-search-must-match-exact-headline
+            ;; Don't ever prompt to create a headline when transcluding
+            (if (eq 'query-to-create org-link-search-must-match-exact-headline)
+                t  ;; Less surprising default than nil - fuzzy search
+              org-link-search-must-match-exact-headline)))
       (with-current-buffer buf
         (org-with-wide-buffer
-         (if search-option
-             (progn
-               (org-link-search search-option)
-               (org-transclusion-content-org-buffer-or-element
-                'only-element plist))
-           (org-transclusion-content-org-buffer-or-element
-            nil plist)))))))
+         (org-transclusion-content-org-buffer-or-element
+          (and search-option
+               (progn
+                 (org-link-search search-option)
+                 t))
+          plist))))))
 
 (defun org-transclusion-content-org-buffer-or-element (only-element plist)
   "Return a list of playload for transclusion.
@@ -1295,15 +1332,15 @@ changes, the logic in this function will need to reviewed."
     m))
 
 (defun org-transclusion-search-or-add-next-empty-line ()
-  "Search the next empty line.
-Start with the next line.  If the current line is the bottom of
-the line, add a new empty line."
-  ;; beginning-of-line 2 moves to the next line if possible
-  (beginning-of-line 2)
-  (if (eobp)(insert "\n")
-    (while (not (looking-at-p "[ \t]*$"))
-      (beginning-of-line 2))
-    (if (eobp)(insert "\n"))))
+  "Move point to the next empty line.
+If no empty line exists before the next org heading or the end of
+the buffer, stop there and add a newline."
+  (forward-line)
+  (while (not (looking-at-p "^[ \t]*$"))
+    (if (or (org-at-heading-p) (eobp))
+        (progn (insert "\n")
+               (backward-char))
+      (forward-line))))
 
 (defun org-transclusion-wrap-path-to-link (path)
   "Return Org link object for PATH string."
@@ -1402,7 +1439,7 @@ It is intended to be used for `org-transclusion-open-source' and
 This function relies on `org-transclusion-find-source-marker' to
 locate the position in the source buffer; thus, the same
 limitation applies.  It depends on which org elements whether or
-not this function can identify the beginnning of the element at
+not this function can identify the beginning of the element at
 point.  If it cannot, it will return the beginning of the
 transclusion, which can be far away from the element at point, if
 the transcluded region is large."
@@ -1546,7 +1583,7 @@ transclusion in this structure:
 
 (defun org-transclusion-live-sync-display-buffer (buffer)
   "Display the source buffer upon entering live-sync edit.
-It rembembers the current arrangement of windows (window
+It remembers the current arrangement of windows (window
 configuration), deletes the other windows, and displays
 BUFFER (intended to be the source buffer being edited in
 live-sync.)

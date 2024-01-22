@@ -1,6 +1,6 @@
 ;;; text-clone.el --- clone and live-sync text -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021-2023  Free Software Foundation, Inc.
+;; Copyright (C) 2021-2024  Free Software Foundation, Inc.
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -17,7 +17,7 @@
 
 ;; Author: Noboru Ota <me@nobiot.com>
 ;; Created: 22 May 2021
-;; Last modified: 08 February 2023
+;; Last modified: 21 January 2024
 
 ;; Keywords: text-clone, transclusion, org-transclusion
 
@@ -30,7 +30,7 @@
 
 ;;;; Credits
 
-;; It is an extention of text-clone functions written as part of GNU Emacs in
+;; It is an extension of text-clone functions written as part of GNU Emacs in
 ;; subr.el.  The first adaption to extend text-clone functions to work across
 ;; buffers was published in StackExchange by the user named Tobias in March
 ;; 2020. It can be found at https://emacs.stackexchange.com/questions/56201/
@@ -48,7 +48,7 @@
 overlays.  Used primarily by `text-clone-delete-overlays'.")
 
 (defvar text-clone-live-sync-in-progress nil
-  "Global varible used by `text-clone-live-sync' function.")
+  "Global variable used by `text-clone-live-sync' function.")
 
 ;;;; Functions
 
@@ -70,7 +70,7 @@ which is primarily used to clean up text-clone overlays with
 `text-clone-delete-overlays'.
 
 This function does not explicitly differentiate overlays for the
-orginal text region and its clones.  Where such distinction is
+original text region and its clones.  Where such distinction is
 important, use the sequence of OVERLAYS list; for example, the
 first element of the list can be the overlay for the original and
 rest, clones.
@@ -150,7 +150,7 @@ This is used on the `modification-hooks' property of text clones.
 AFTER, BEG, and END are the fixed args for `modification-hooks'
 and friends in an overlay.
 
-It's a simplified version of the orignal `text-clone--maintain'.
+It's a simplified version of the original `text-clone--maintain'.
 This function does not use SPREADP or SYNTAX (both defined in
 `text-clone-create').
 

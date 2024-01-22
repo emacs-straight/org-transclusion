@@ -1,6 +1,6 @@
 ;;; org-transclusion-src-lines.el --- Extension -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021-2023  Free Software Foundation, Inc.
+;; Copyright (C) 2021-2024  Free Software Foundation, Inc.
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -17,7 +17,7 @@
 
 ;; Author: Noboru Ota <me@nobiot.com>
 ;; Created: 24 May 2021
-;; Last modified: 23 June 2023
+;; Last modified: 21 January 2024
 
 ;;; Commentary:
 ;;  This is an extension to `org-transclusion'.  When active, it adds features
@@ -52,7 +52,7 @@
 (add-hook 'org-transclusion-keyword-plist-to-string-functions
           #'org-transclusion-keyword-plist-to-string-src-lines)
 
-;; Transclusion content formating
+;; Transclusion content formatting
 (add-hook 'org-transclusion-content-format-functions
           #'org-transclusion-content-format-src-lines)
 
@@ -143,7 +143,7 @@ it means from line 10 to the end of file."
                                (save-excursion
                                  (ignore-errors
                                    ;; FIXME `org-link-search' does not
-                                   ;; return postion when eithher
+                                   ;; return position when eithher
                                    ;; ::/regex/ or ::number is used
                                    (if (org-link-search search-option)
                                        (line-beginning-position))))))
@@ -160,7 +160,7 @@ it means from line 10 to the end of file."
                                   (save-excursion
                                     (ignore-errors
                                       ;; FIXME `org-link-search' does not
-                                      ;; return postion when either ::/regex/
+                                      ;; return position when either ::/regex/
                                       ;; or ::number is used
                                       (when (org-link-search end-search-op)
                                         (line-beginning-position))))))))
