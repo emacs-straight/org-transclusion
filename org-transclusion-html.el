@@ -32,19 +32,20 @@
 ;;;; Requirements
 
 (require 'org)
+(require 'org-element)
 (require 'cl-lib)
 (require 'pcase)
 (require 'dom)
 
 ;;;; Hook into org-transclusion
 
-(add-hook 'org-transclusion-add-functions #'org-transclusion-add-html-file)
+(add-hook 'org-transclusion-add-functions #'org-transclusion-html-add-file)
 
 ;;;; Functions
 
 ;;;;; Add HTML file
 
-(defun org-transclusion-add-html-file (link plist)
+(defun org-transclusion-html-add-file (link plist)
   "Return a list for HTML file LINK object and PLIST.
 Return nil if not found."
   (and (string= "file" (org-element-property :type link))
@@ -52,7 +53,7 @@ Return nil if not found."
            (with-current-buffer (find-file-noselect
                                  (org-element-property :path link) t)
              (org-transclusion-html--html-p (current-buffer))))
-       (append '(:tc-type "html-org-file")
+       (append '(:tc-type "org-html-file")
                (org-transclusion-html-org-file-content link plist))))
 
 (defun org-transclusion-html-org-file-content (link _plist)
