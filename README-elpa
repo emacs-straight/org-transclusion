@@ -84,12 +84,12 @@ or user manual: [online] or Info node `(org-transclusion)Customizing'.
     Markdown, or other Org files
 
   • With version 1.4, a transclusion works with hyper:// links (see
-    [hyperdrive.el])
-  or <http://> links. Splitting the org-transclusion-add into two parts
-  enables functions in org-transclusion-add-functions to be
-  asynchronous. With this change, content can be transcluded over a
-  network, using <http://>, hyper://, or other protocols. For a
-  proof-of-concept integration with hyperdrive.el, see [this file].
+    [hyperdrive.el]) or <http://> links. Splitting the
+    org-transclusion-add into two parts enables functions in
+    org-transclusion-add-functions to be asynchronous. With this change,
+    content can be transcluded over a network, using <http://>,
+    hyper://, or other protocols. For a proof-of-concept integration
+    with hyperdrive.el, see [this file].
 
   • Keep the file system clear of the copies of text content –
     Org-transclusion tries hard to save only the links to the file
@@ -98,8 +98,8 @@ or user manual: [online] or Info node `(org-transclusion)Customizing'.
   • For Org files, use different headline levels from the source Org
     file
 
-  • For Org files, use filters to include only relevant elements (e.g.
-    filter out properties in the transclusions)
+  • For Org files, use filters to include only relevant elements
+    (e.g. filter out properties in the transclusions)
 
   • For program source and plain text files, transclude a certain lines
     or dynamically specify the from/to lines to keep the transclusion
@@ -133,12 +133,12 @@ or user manual: [online] or Info node `(org-transclusion)Customizing'.
 
   ┌────
   │ (add-to-list 'package-archives
-  │              '("gnu-devel" . "https://elpa.gnu.org/devel/") :append)
+  │ 	     '("gnu-devel" . "https://elpa.gnu.org/devel/") :append)
   └────
 
   Refresh the archive with `M-x package-refresh-contents RET' and you
-  can do `M-x package-install RET org-transclusion' to install it.
-  Alternatively, you can use `package-list-packages'.
+  can do `M-x package-install RET org-transclusion' to install
+  it. Alternatively, you can use `package-list-packages'.
 
   After installation, you can start using Org-transclusion with no
   additional configuration. Below are some example keybindings that can
