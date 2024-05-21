@@ -1,4 +1,4 @@
-This is docv9v7fb.info, produced by makeinfo version 6.8 from
+This is docHBiZGS.info, produced by makeinfo version 6.8 from
 org-transclusion.texi.
 
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -20,7 +20,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docv9v7fb.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
+File: docHBiZGS.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
 
 Org-transclusion User Manual
 ****************************
@@ -110,7 +110,7 @@ Credits
 
 
 
-File: docv9v7fb.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
+File: docHBiZGS.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
 
 1 Example Use Cases & Main Features
 ***********************************
@@ -149,14 +149,13 @@ Main Features:
    • Work with any text file such as program source code, plain text,
      Markdown, or other Org files
 
-   • With version 1.4, a transclusion works with hyper:// links (see
-     hyperdrive.el (https://git.sr.ht/~ushin/hyperdrive.el)) or
-     <http://> links.  Splitting the org-transclusion-add into two parts
-     enables functions in org-transclusion-add-functions to be
-     asynchronous.  With this change, content can be transcluded over a
-     network, using <http://>, hyper://, or other protocols.  For a
-     proof-of-concept integration with hyperdrive.el, see this file
-     (https://git.sr.ht/~ushin/hyperdrive.el/tree/org-transclusion/item/hyperdrive-org-transclusion.el).
+   • With version 1.4, transclude content over network protocols like
+     ‘http://’ (with org-transclusion-http
+     (https://git.sr.ht/~ushin/org-transclusion-http)) and ‘hyper://’
+     (with hyperdrive-org-transclusion
+     (https://git.sr.ht/~ushin/hyperdrive-org-transclusion)).  Splitting
+     ‘org-transclusion-add’ into two parts enables functions in
+     ‘org-transclusion-add-functions’ to be asynchronous.
 
    • Keep the file system clear of the copies of text content –
      Org-transclusion tries hard to save only the links to the file
@@ -179,7 +178,7 @@ Main Features:
    • Extend Org-transclusion with its extension framework
 
 
-File: docv9v7fb.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
+File: docHBiZGS.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
 
 2 Installation
 **************
@@ -226,7 +225,7 @@ install the package and configure the keybindings.
                     :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
 
-File: docv9v7fb.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
+File: docHBiZGS.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
 
 3 Getting Started
 *****************
@@ -310,7 +309,7 @@ content you transclude.  Explore the rest of the user manual and play
 with Org-transclusion to get familiar with it.
 
 
-File: docv9v7fb.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
+File: docHBiZGS.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
 
 4 Usage
 *******
@@ -329,7 +328,7 @@ File: docv9v7fb.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started, 
 * Extensions::
 
 
-File: docv9v7fb.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
+File: docHBiZGS.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
 
 4.1 Org-transclusion mode, activate, and deactivate
 ===================================================
@@ -375,7 +374,7 @@ You can override the ‘:disable-auto’ property by manually calling
 Features:: for a list).
 
 
-File: docv9v7fb.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
+File: docHBiZGS.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
 
 4.2 Org links supported
 =======================
@@ -417,30 +416,29 @@ For the ‘:only-contents’ property, refer to sub-section *note Filtering
 Org elements per transclusion: Filter Org elements per transclusion.
 
 
-File: docv9v7fb.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
+File: docHBiZGS.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
 
 4.3 Transclude over a network with ‘hyper://’, ‘http://’, etc.
 ==============================================================
 
 Version 1.4 includes changes which make it possible for asynchronously
 transclude content, e.g., over a network.  To transclude content via
-‘http://’, first install org-transclusion-http
-(https://git.sr.ht/~ushin/org-transclusion-http), then run ‘M-x
-org-transclusion-add’ on the following link to transclude the HTML
-element with the “#emacs” id:
+‘http://’, first install the ‘org-transclusion-http’ extension (see
+*note extensions: Extensions.), then run ‘M-x org-transclusion-add’ on
+the following link to transclude the HTML element with the “#emacs” id:
 
      #+transclude: [[https://ushin.org/software.html#emacs]]
 
-To transclude content via ‘hyper://’, first install hyperdrive.el
-(https://ushin.org/hyperdrive/hyperdrive-manual.org), then run ‘M-x
-org-transclusion-add’ on the following link to transclude the the Org
-heading with the property ‘CUSTOM_ID: emacs’ inside the ‘/software.org’
-file inside the USHIN hyperdrive:
+To transclude content via ‘hyper://’, first install the
+‘hyperdrive-org-transclusion’ extension (see *note extensions:
+Extensions.), then run ‘M-x org-transclusion-add’ on the following link
+to transclude the Org heading with the property ‘CUSTOM_ID: emacs’
+inside the ‘/software.org’ file inside the USHIN hyperdrive:
 
      #+transclude: [[hyper://aaj45d88g4eenu76rpmwzjiabsof1w8u6fufq6oogyhjk1ubygxy/software.org#%3A%3A%23emacs]]
 
 
-File: docv9v7fb.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
+File: docHBiZGS.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
 
 4.4 Control levels of headlines per transclusion
 ================================================
@@ -481,7 +479,7 @@ Other ways to control include the following.
      by default in ‘org-transclusion-map’
 
 
-File: docv9v7fb.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
+File: docHBiZGS.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
 
 4.5 Filter Org elements per transclusion
 ========================================
@@ -580,7 +578,7 @@ link expanded (1)
 absolute one.  Info node ‘(elisp) File-Name-Expansion’
 
 
-File: docv9v7fb.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
+File: docHBiZGS.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
 
 4.5.1 Notes on excluding the headline element
 ---------------------------------------------
@@ -604,7 +602,7 @@ two are still the top-most level of their own respective subtrees.
        Content of Headline
 
 
-File: docv9v7fb.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
+File: docHBiZGS.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
 
 4.6 Detach transclusion and copy source buffer
 ==============================================
@@ -637,7 +635,7 @@ of 1.4.0.
      You can undo this operation.
 
 
-File: docv9v7fb.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
+File: docHBiZGS.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
 
 4.7 Live-sync edit
 ==================
@@ -688,7 +686,7 @@ transcluded copy, leaving only the keyword in the file system.
         † Also inherits ‘org-mode-map’
 
 
-File: docv9v7fb.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
+File: docHBiZGS.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
 
 4.8 Transclude source file into src-block
 =========================================
@@ -723,7 +721,7 @@ transcluded into src-block.  It is planned to be added to the next
 stable release.
 
 
-File: docv9v7fb.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
+File: docHBiZGS.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
 
 4.9 Transclude range of lines for text and source files
 =======================================================
@@ -742,7 +740,7 @@ following properties to specify a range of lines to transclude.
 * Transclude HTML content with Pandoc::
 
 
-File: docv9v7fb.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: docHBiZGS.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
 4.9.1 ‘:lines’ property to specify a range of lines
 ---------------------------------------------------
@@ -785,7 +783,7 @@ found by the search option for text string “Transcendental Ontology”
      intended.
 
 
-File: docv9v7fb.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
+File: docHBiZGS.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
 
 4.9.2 ‘:end’ property to specify a search term to dynamically look for the end of a range
 -----------------------------------------------------------------------------------------
@@ -812,7 +810,7 @@ Example 3:
      #+transclude: [[file:../../test/python-1.py::id-1234]] :lines 2- :src python :end "id-1234 end here"
 
 
-File: docv9v7fb.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: docHBiZGS.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
 4.9.3 ‘:thing-at-point’ or ‘:thingatpt’ property to specify a “thing” to transclude from the source.
 ----------------------------------------------------------------------------------------------------
@@ -866,7 +864,7 @@ Example 5:
      #+transclude: [[./things-at-point-dir/baz.el::id:1234567890][barz-baz-fuzz]]  :src elisp :thingatpt defun
 
 
-File: docv9v7fb.info,  Node: Transclude HTML content with Pandoc,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
+File: docHBiZGS.info,  Node: Transclude HTML content with Pandoc,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
 
 4.9.4 Transclude HTML content with Pandoc
 -----------------------------------------
@@ -881,13 +879,16 @@ off).
 
 Since it’s not currently possible to add anchor links to local ‘file:’
 Org links, HTML transclusions always render the entire document as Org.
-However, packages which transclude HTML documents over a network, such
-as hyperdrive.el (https://git.sr.ht/~ushin/hyperdrive.el) and
+However, packages which transclude HTML documents over a network
+protocol that supports link fragments, such as
+hyperdrive-org-transclusion
+(https://git.sr.ht/~ushin/hyperdrive-org-transclusion) and
 org-transclusion-http (https://git.sr.ht/~ushin/org-transclusion-http),
-are able to render specific HTML elements by tag.
+are able to render specific HTML elements by tag (see *note subsection:
+Transclude over a network with hyper// http// etc.).
 
 
-File: docv9v7fb.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
+File: docHBiZGS.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
 
 4.10 Extensions
 ===============
@@ -906,8 +907,9 @@ this in your configuration file.
      ;; Ensure that load-path to org-transclusion is already added
      ;; If you installed it with the built-in package.el, this should be already done.
      ;; (add-to-list  'load-path "path/to/org-transclusion/")
-     (add-to-list 'org-transclusion-extensions 'org-transclusion-indent-mode)
-     (require 'org-transclusion-indent-mode)
+     (with-eval-after-load 'org-transclusion
+       (add-to-list 'org-transclusion-extensions 'org-transclusion-indent-mode)
+       (require 'org-transclusion-indent-mode))
 
 Currently, the following extensions are available.
 
@@ -932,8 +934,29 @@ Currently, the following extensions are available.
 (off by default) ‘org-transclusion-html’
      Transclude local HTML files by converting them to Org with Pandoc.
 
+(off by default) ‘org-transclusion-http’
+     Asynchronously transclude remote HTML files (and other file types)
+     over HTTP.  To use this feature, first install
+     org-transclusion-http
+     (https://git.sr.ht/~ushin/org-transclusion-http) and then add the
+     following snippet to your configuration:
+
+     (with-eval-after-load 'org-transclusion
+       (add-to-list 'org-transclusion-extensions 'org-transclusion-http)
+       (require 'org-transclusion-http))
+
+(off by default) ‘hyperdrive-org-transclusion’
+     Asynchronously transclude remote hyperdrive files over HTTP.  To
+     use this feature, first install hyperdrive-org-transclusion
+     (https://git.sr.ht/~ushin/hyperdrive-org-transclusion) and then add
+     the following snippet to your configuration:
+
+     (with-eval-after-load 'org-transclusion
+       (add-to-list 'org-transclusion-extensions 'hyperdrive-org-transclusion)
+       (require 'hyperdrive-org-transclusion))
+
 
-File: docv9v7fb.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
+File: docHBiZGS.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
 
 5 Customizing
 *************
@@ -996,7 +1019,7 @@ transclusions:
 * Keybindings::
 
 
-File: docv9v7fb.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
+File: docHBiZGS.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.1 Customizable filter to exclude certain Org elements
 =======================================================
@@ -1018,7 +1041,7 @@ the sub-section on *note filtering Org elements per transclusion: Filter
 Org elements per transclusion.
 
 
-File: docv9v7fb.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
+File: docHBiZGS.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
 
 5.2 Include the section before the first headline (Org file only)
 =================================================================
@@ -1030,7 +1053,7 @@ Set it to ‘t’ (or non-nil) to transclude the first section.  It also
 works when the first section is followed by headlines.
 
 
-File: docv9v7fb.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
+File: docHBiZGS.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.3 Faces & fringe bitmap
 =========================
@@ -1041,7 +1064,7 @@ File: docv9v7fb.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: I
 * Faces for the fringes next to transcluded region and source region::
 
 
-File: docv9v7fb.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
+File: docHBiZGS.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
 
 5.3.1 Face for the ‘#+transclude’ keyword
 -----------------------------------------
@@ -1054,7 +1077,7 @@ on).
      the ‘org-transclusion-keyword’ face.
 
 
-File: docv9v7fb.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
+File: docHBiZGS.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
 
 5.3.2 Faces for the fringes next to transcluded region and source region
 ------------------------------------------------------------------------
@@ -1102,7 +1125,7 @@ some background color to source and transclusion.
      terminal).
 
 
-File: docv9v7fb.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
+File: docHBiZGS.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
 
 5.4 Keybindings
 ===============
@@ -1137,7 +1160,7 @@ File: docv9v7fb.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Cus
         † Also inherits ‘org-mode-map’
 
 
-File: docv9v7fb.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
+File: docHBiZGS.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
 
 6 Known Limitations
 *******************
@@ -1198,7 +1221,7 @@ limitations.
      always the beginning of the line.
 
 
-File: docv9v7fb.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
+File: docHBiZGS.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
 
 7 Credits
 *********
@@ -1209,7 +1232,7 @@ File: docv9v7fb.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitati
 * Text-Clone::
 
 
-File: docv9v7fb.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
+File: docHBiZGS.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
 
 7.1 Original idea by John Kitchin
 =================================
@@ -1263,7 +1286,7 @@ File: docv9v7fb.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  
      a name/ID.
 
 
-File: docv9v7fb.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
+File: docHBiZGS.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
 
 7.2 Text-Clone
 ==============
@@ -1276,7 +1299,7 @@ user named Tobias in March 2020.  It can be found at
 The text-clone library takes this line of work further.
 
 
-File: docv9v7fb.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
+File: docHBiZGS.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
 
 8 Contributing
 **************
@@ -1298,7 +1321,7 @@ in GNU Emacs” (Org Mode website
 Thank you.
 
 
-File: docv9v7fb.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
+File: docHBiZGS.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
 
 Appendix A Index - Features
 ***************************
@@ -1351,7 +1374,7 @@ Appendix A Index - Features
                                                                 (line 6)
 
 
-File: docv9v7fb.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
+File: docHBiZGS.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
 
 Appendix B Index - Commands
 ***************************
@@ -1384,7 +1407,7 @@ Appendix B Index - Commands
 * org-transclusion-refresh:              Getting Started.       (line 6)
 
 
-File: docv9v7fb.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
+File: docHBiZGS.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
 
 Appendix C Index - User Options
 *******************************
@@ -1423,7 +1446,7 @@ Appendix C Index - User Options
 * org-transclusion-source-fringe:        Faces & fringe bitmap. (line 6)
 
 
-File: docv9v7fb.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
+File: docHBiZGS.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
 
 Appendix D GNU Free Documentation License
 *****************************************
@@ -1910,41 +1933,41 @@ Tag Table:
 Node: Top839
 Ref: whatis1499
 Node: Example Use Cases & Main Features3971
-Node: Installation6891
-Node: Getting Started8629
-Node: Usage12150
-Node: Org-transclusion mode activate and deactivate12779
-Node: Org links supported14939
-Node: Transclude over a network with hyper// http// etc16679
-Node: Control levels of headlines per transclusion17852
-Node: Filter Org elements per transclusion19690
-Ref: Filter Org elements per transclusion-Footnote-123927
-Node: Notes on excluding the headline element24063
-Node: Detach transclusion and copy source buffer25026
-Node: Live-sync edit26299
-Node: Transclude source file into src-block28674
-Node: Transclude range of lines for text and source files29909
-Node: lines property to specify a range of lines30769
-Node: end property to specify a search term to dynamically look for the end of a range32684
-Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source34383
-Node: Transclude HTML content with Pandoc37217
-Node: Extensions38148
-Node: Customizing40295
-Node: Customizable filter to exclude certain Org elements42876
-Node: Include the section before the first headline (Org file only)43894
-Node: Faces & fringe bitmap44562
-Node: Face for the #+transclude keyword44896
-Node: Faces for the fringes next to transcluded region and source region45383
-Node: Keybindings47493
-Node: Known Limitations48643
-Node: Credits51344
-Node: Original idea by John Kitchin51521
-Node: Text-Clone54073
-Node: Contributing54643
-Node: Index - Features55460
-Node: Index - Commands59126
-Node: Index - User Options61096
-Node: GNU Free Documentation License63504
+Node: Installation6742
+Node: Getting Started8480
+Node: Usage12001
+Node: Org-transclusion mode activate and deactivate12630
+Node: Org links supported14790
+Node: Transclude over a network with hyper// http// etc16530
+Node: Control levels of headlines per transclusion17723
+Node: Filter Org elements per transclusion19561
+Ref: Filter Org elements per transclusion-Footnote-123798
+Node: Notes on excluding the headline element23934
+Node: Detach transclusion and copy source buffer24897
+Node: Live-sync edit26170
+Node: Transclude source file into src-block28545
+Node: Transclude range of lines for text and source files29780
+Node: lines property to specify a range of lines30640
+Node: end property to specify a search term to dynamically look for the end of a range32555
+Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source34254
+Node: Transclude HTML content with Pandoc37088
+Node: Extensions38160
+Node: Customizing41313
+Node: Customizable filter to exclude certain Org elements43894
+Node: Include the section before the first headline (Org file only)44912
+Node: Faces & fringe bitmap45580
+Node: Face for the #+transclude keyword45914
+Node: Faces for the fringes next to transcluded region and source region46401
+Node: Keybindings48511
+Node: Known Limitations49661
+Node: Credits52362
+Node: Original idea by John Kitchin52539
+Node: Text-Clone55091
+Node: Contributing55661
+Node: Index - Features56478
+Node: Index - Commands60144
+Node: Index - User Options62114
+Node: GNU Free Documentation License64522
 
 End Tag Table
 
