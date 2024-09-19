@@ -1,4 +1,4 @@
-This is docHBiZGS.info, produced by makeinfo version 6.8 from
+This is docLRtWiX.info, produced by makeinfo version 6.8 from
 org-transclusion.texi.
 
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -20,7 +20,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docHBiZGS.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
+File: docLRtWiX.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
 
 Org-transclusion User Manual
 ****************************
@@ -110,7 +110,7 @@ Credits
 
 
 
-File: docHBiZGS.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
+File: docLRtWiX.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
 
 1 Example Use Cases & Main Features
 ***********************************
@@ -178,7 +178,7 @@ Main Features:
    • Extend Org-transclusion with its extension framework
 
 
-File: docHBiZGS.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
+File: docLRtWiX.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
 
 2 Installation
 **************
@@ -225,7 +225,7 @@ install the package and configure the keybindings.
                     :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
 
-File: docHBiZGS.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
+File: docLRtWiX.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
 
 3 Getting Started
 *****************
@@ -309,7 +309,7 @@ content you transclude.  Explore the rest of the user manual and play
 with Org-transclusion to get familiar with it.
 
 
-File: docHBiZGS.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
+File: docLRtWiX.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
 
 4 Usage
 *******
@@ -328,7 +328,7 @@ File: docHBiZGS.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started, 
 * Extensions::
 
 
-File: docHBiZGS.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
+File: docLRtWiX.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
 
 4.1 Org-transclusion mode, activate, and deactivate
 ===================================================
@@ -374,7 +374,7 @@ You can override the ‘:disable-auto’ property by manually calling
 Features:: for a list).
 
 
-File: docHBiZGS.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
+File: docLRtWiX.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
 
 4.2 Org links supported
 =======================
@@ -416,7 +416,7 @@ For the ‘:only-contents’ property, refer to sub-section *note Filtering
 Org elements per transclusion: Filter Org elements per transclusion.
 
 
-File: docHBiZGS.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
+File: docLRtWiX.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
 
 4.3 Transclude over a network with ‘hyper://’, ‘http://’, etc.
 ==============================================================
@@ -438,7 +438,7 @@ inside the ‘/software.org’ file inside the USHIN hyperdrive:
      #+transclude: [[hyper://aaj45d88g4eenu76rpmwzjiabsof1w8u6fufq6oogyhjk1ubygxy/software.org#%3A%3A%23emacs]]
 
 
-File: docHBiZGS.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
+File: docLRtWiX.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
 
 4.4 Control levels of headlines per transclusion
 ================================================
@@ -479,7 +479,7 @@ Other ways to control include the following.
      by default in ‘org-transclusion-map’
 
 
-File: docHBiZGS.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
+File: docLRtWiX.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
 
 4.5 Filter Org elements per transclusion
 ========================================
@@ -578,7 +578,7 @@ link expanded (1)
 absolute one.  Info node ‘(elisp) File-Name-Expansion’
 
 
-File: docHBiZGS.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
+File: docLRtWiX.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
 
 4.5.1 Notes on excluding the headline element
 ---------------------------------------------
@@ -602,7 +602,7 @@ two are still the top-most level of their own respective subtrees.
        Content of Headline
 
 
-File: docHBiZGS.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
+File: docLRtWiX.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
 
 4.6 Detach transclusion and copy source buffer
 ==============================================
@@ -635,7 +635,7 @@ of 1.4.0.
      You can undo this operation.
 
 
-File: docHBiZGS.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
+File: docLRtWiX.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
 
 4.7 Live-sync edit
 ==================
@@ -686,7 +686,7 @@ transcluded copy, leaving only the keyword in the file system.
         † Also inherits ‘org-mode-map’
 
 
-File: docHBiZGS.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
+File: docLRtWiX.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
 
 4.8 Transclude source file into src-block
 =========================================
@@ -721,7 +721,7 @@ transcluded into src-block.  It is planned to be added to the next
 stable release.
 
 
-File: docHBiZGS.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
+File: docLRtWiX.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
 
 4.9 Transclude range of lines for text and source files
 =======================================================
@@ -740,7 +740,7 @@ following properties to specify a range of lines to transclude.
 * Transclude HTML content with Pandoc::
 
 
-File: docHBiZGS.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: docLRtWiX.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
 4.9.1 ‘:lines’ property to specify a range of lines
 ---------------------------------------------------
@@ -783,7 +783,7 @@ found by the search option for text string “Transcendental Ontology”
      intended.
 
 
-File: docHBiZGS.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
+File: docLRtWiX.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
 
 4.9.2 ‘:end’ property to specify a search term to dynamically look for the end of a range
 -----------------------------------------------------------------------------------------
@@ -810,7 +810,7 @@ Example 3:
      #+transclude: [[file:../../test/python-1.py::id-1234]] :lines 2- :src python :end "id-1234 end here"
 
 
-File: docHBiZGS.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: docLRtWiX.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
 4.9.3 ‘:thing-at-point’ or ‘:thingatpt’ property to specify a “thing” to transclude from the source.
 ----------------------------------------------------------------------------------------------------
@@ -864,7 +864,7 @@ Example 5:
      #+transclude: [[./things-at-point-dir/baz.el::id:1234567890][barz-baz-fuzz]]  :src elisp :thingatpt defun
 
 
-File: docHBiZGS.info,  Node: Transclude HTML content with Pandoc,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
+File: docLRtWiX.info,  Node: Transclude HTML content with Pandoc,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
 
 4.9.4 Transclude HTML content with Pandoc
 -----------------------------------------
@@ -888,7 +888,7 @@ are able to render specific HTML elements by tag (see *note subsection:
 Transclude over a network with hyper// http// etc.).
 
 
-File: docHBiZGS.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
+File: docLRtWiX.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
 
 4.10 Extensions
 ===============
@@ -956,7 +956,7 @@ Currently, the following extensions are available.
        (require 'hyperdrive-org-transclusion))
 
 
-File: docHBiZGS.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
+File: docLRtWiX.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
 
 5 Customizing
 *************
@@ -1019,7 +1019,7 @@ transclusions:
 * Keybindings::
 
 
-File: docHBiZGS.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
+File: docLRtWiX.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.1 Customizable filter to exclude certain Org elements
 =======================================================
@@ -1041,7 +1041,7 @@ the sub-section on *note filtering Org elements per transclusion: Filter
 Org elements per transclusion.
 
 
-File: docHBiZGS.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
+File: docLRtWiX.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
 
 5.2 Include the section before the first headline (Org file only)
 =================================================================
@@ -1053,7 +1053,7 @@ Set it to ‘t’ (or non-nil) to transclude the first section.  It also
 works when the first section is followed by headlines.
 
 
-File: docHBiZGS.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
+File: docLRtWiX.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.3 Faces & fringe bitmap
 =========================
@@ -1064,7 +1064,7 @@ File: docHBiZGS.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: I
 * Faces for the fringes next to transcluded region and source region::
 
 
-File: docHBiZGS.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
+File: docLRtWiX.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
 
 5.3.1 Face for the ‘#+transclude’ keyword
 -----------------------------------------
@@ -1077,7 +1077,7 @@ on).
      the ‘org-transclusion-keyword’ face.
 
 
-File: docHBiZGS.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
+File: docLRtWiX.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
 
 5.3.2 Faces for the fringes next to transcluded region and source region
 ------------------------------------------------------------------------
@@ -1125,7 +1125,7 @@ some background color to source and transclusion.
      terminal).
 
 
-File: docHBiZGS.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
+File: docLRtWiX.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
 
 5.4 Keybindings
 ===============
@@ -1160,7 +1160,7 @@ File: docHBiZGS.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Cus
         † Also inherits ‘org-mode-map’
 
 
-File: docHBiZGS.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
+File: docLRtWiX.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
 
 6 Known Limitations
 *******************
@@ -1221,7 +1221,7 @@ limitations.
      always the beginning of the line.
 
 
-File: docHBiZGS.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
+File: docLRtWiX.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
 
 7 Credits
 *********
@@ -1232,7 +1232,7 @@ File: docHBiZGS.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitati
 * Text-Clone::
 
 
-File: docHBiZGS.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
+File: docLRtWiX.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
 
 7.1 Original idea by John Kitchin
 =================================
@@ -1286,7 +1286,7 @@ File: docHBiZGS.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  
      a name/ID.
 
 
-File: docHBiZGS.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
+File: docLRtWiX.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
 
 7.2 Text-Clone
 ==============
@@ -1299,7 +1299,7 @@ user named Tobias in March 2020.  It can be found at
 The text-clone library takes this line of work further.
 
 
-File: docHBiZGS.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
+File: docLRtWiX.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
 
 8 Contributing
 **************
@@ -1321,7 +1321,7 @@ in GNU Emacs” (Org Mode website
 Thank you.
 
 
-File: docHBiZGS.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
+File: docLRtWiX.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
 
 Appendix A Index - Features
 ***************************
@@ -1374,7 +1374,7 @@ Appendix A Index - Features
                                                                 (line 6)
 
 
-File: docHBiZGS.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
+File: docLRtWiX.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
 
 Appendix B Index - Commands
 ***************************
@@ -1407,7 +1407,7 @@ Appendix B Index - Commands
 * org-transclusion-refresh:              Getting Started.       (line 6)
 
 
-File: docHBiZGS.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
+File: docLRtWiX.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
 
 Appendix C Index - User Options
 *******************************
@@ -1446,7 +1446,7 @@ Appendix C Index - User Options
 * org-transclusion-source-fringe:        Faces & fringe bitmap. (line 6)
 
 
-File: docHBiZGS.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
+File: docLRtWiX.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
 
 Appendix D GNU Free Documentation License
 *****************************************
