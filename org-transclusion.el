@@ -17,7 +17,7 @@
 
 ;; Author:        Noboru Ota <me@nobiot.com>
 ;; Created:       10 October 2020
-;; Last modified: 31 December 2024
+;; Last modified: 01 January 2025
 
 ;; URL: https://github.com/nobiot/org-transclusion
 ;; Keywords: org-mode, transclusion, writing
@@ -1120,7 +1120,7 @@ INDENT is the number of current indentation of the #+transclude."
   "Return a list of payload from MARKER and PLIST.
 This function is intended to be used for Org-ID.  It delegates the
 work to
-`org-transclusion-content-org-buffer-or-element'."
+`org-transclusion-content-org-filtered'."
   (if (and marker (marker-buffer marker)
            (buffer-live-p (marker-buffer marker)))
       (progn
@@ -1128,17 +1128,17 @@ work to
           (org-with-wide-buffer
            (goto-char marker)
            (if (org-before-first-heading-p)
-               (org-transclusion-content-org-buffer-or-element
+               (org-transclusion-content-org-filtered
                 nil plist)
-             (org-transclusion-content-org-buffer-or-element
+             (org-transclusion-content-org-filtered
               'only-element plist)))))
     (message "Nothing done. Cannot find marker for the ID.")))
 
 (defun org-transclusion-content-org-link (link plist)
   "Return a list of payload from Org LINK object and PLIST.
-This function is intended to be used for Org-ID.  It delegates the
+This function is intended to be used for Org-ID. It delegates the
 work to
-`org-transclusion-content-org-buffer-or-element'."
+`org-transclusion-content-org-filtered'."
   (save-excursion
     ;; First visit the buffer and go to the relevant element if
     ;; search-option is present.
@@ -1152,14 +1152,26 @@ work to
               org-link-search-must-match-exact-headline)))
       (with-current-buffer buf
         (org-with-wide-buffer
-         (org-transclusion-content-org-buffer-or-element
-          (and search-option
-               (progn
-                 (org-link-search search-option)
-                 t))
-          plist))))))
+         (if search-option
+             (progn
+               (org-link-search search-option)
+               (org-transclusion-content-org-filtered
+                'only-element plist))
+           (org-transclusion-content-org-filtered
+            nil plist)))))))
 
-(defun org-transclusion-content-org-buffer-or-element (only-element plist)
+(defvar org-transclusion-content-filter-org-functions '())
+
+(add-hook 'org-transclusion-content-filter-org-functions
+          #'org-transclusion-content-filter-org-only-contents-function)
+
+(add-hook 'org-transclusion-content-filter-org-functions
+          #'org-transclusion-content-filter-org-expand-links-function)
+
+(make-obsolete 'org-transclusion-content-org-buffer-or-element
+               'org-transclusion-content-org-filtered "1.4.1")
+
+(defun org-transclusion-content-org-filtered (only-element plist)
   "Return a list of payload for transclusion.
 This function assumes the point is at the beginning of the org
 element to transclude.
@@ -1189,44 +1201,44 @@ property controls the filter applied to the transclusion."
         (setq el (org-element-property :parent el)))
       (let ((beg (org-element-property :begin el))
             (end (org-element-property :end el))
-            (only-contents (plist-get plist :only-contents))
-            (exclude-elements
-             (org-transclusion-keyword-plist-to-exclude-elements plist))
-            (expand-links (plist-get plist :expand-links))
             obj)
         (when only-element
           (narrow-to-region beg end))
         (setq obj (org-element-parse-buffer))
-        ;; Apply `org-transclusion-exclude-elements'
-        ;; Appending exclude-elements can duplicate symbols
-        ;; But that does not influence the output
-        (let ((org-transclusion-exclude-elements
-               (append exclude-elements org-transclusion-exclude-elements)))
-          (setq obj (org-element-map obj org-element-all-elements
-                      #'org-transclusion-content-filter-org-exclude-elements
-                      nil nil org-element-all-elements nil)))
-        ;; First section
-        (unless only-element ;only-element is nil when it is a first section
-          (setq obj (org-element-map obj org-element-all-elements
-                      #'org-transclusion-content-filter-org-first-section
-                      nil nil org-element-all-elements nil)))
-        ;; Only contents
-        (when only-contents
-          (setq obj (org-element-map obj org-element-all-elements
-                      #'org-transclusion-content-filter-org-only-contents
-                      nil nil '(section) nil)))
-
-        ;; Expand file names in all the links
-        (when expand-links
-          (org-element-map obj 'link
-            #'org-transclusion-content-filter-expand-links))
-
+        (setq obj (org-transclusion-content-org-filter only-element obj plist))
         (list :src-content (org-element-interpret-data obj)
               :src-buf (current-buffer)
               :src-beg (point-min)
               :src-end (point-max))))))
 
-(defun org-transclusion-content-filter-expand-links (link)
+(defun org-transclusion-content-org-filter (only-element obj plist)
+  ;; Apply `org-transclusion-exclude-elements'
+  ;; Appending exclude-elements can duplicate symbols
+  ;; But that does not influence the output
+  (let ((org-transclusion-exclude-elements
+         (append (org-transclusion-keyword-plist-to-exclude-elements plist)
+                 org-transclusion-exclude-elements)))
+    (setq obj (org-element-map obj org-element-all-elements
+                #'org-transclusion-content-filter-org-exclude-elements
+                nil nil org-element-all-elements nil)))
+  ;; First section
+  (unless only-element ;only-element is nil when it is a first section
+    (setq obj (org-element-map obj org-element-all-elements
+                #'org-transclusion-content-filter-org-first-section
+                nil nil org-element-all-elements nil)))
+  ;; Apply other filters
+    (dolist (fn org-transclusion-content-filter-org-functions)
+      (let ((obj-returned (funcall fn obj plist)))
+        ;; If nil is returned, do not change the org-content (obj)
+        (when obj-returned (setq obj obj-returned))))
+  obj)
+
+(defun org-transclusion-content-filter-org-expand-links-function (obj plist)
+  (when (plist-get plist :expand-links)
+    (org-element-map obj 'link #'org-transclusion-content-filter-org-expand-links)
+    obj))
+
+(defun org-transclusion-content-filter-org-expand-links (link)
   "Convert LINK to an absolute filename.
 LINK is assumed to be an Org element. This function does nothing
 to LINK if the link is already absolute.
@@ -1260,6 +1272,12 @@ is non-nil."
            (not org-transclusion-include-first-section))
       nil
     data))
+
+(defun org-transclusion-content-filter-org-only-contents-function (obj plist)
+  (when-let ((only-contents (plist-get plist :only-contents)))
+    (org-element-map obj org-element-all-elements
+      #'org-transclusion-content-filter-org-only-contents
+      nil nil 'section nil)))
 
 (defun org-transclusion-content-filter-org-only-contents (data)
   "Exclude headlines from DATA to include only contents."
@@ -1371,21 +1389,19 @@ Currently the following cases are prevented:
 Case 1. Element at point is NOT #+transclude:
         Element is in a block - e.g. example
 Case 2. #+transclude inside another transclusion"
-  (let ((elm (org-element-at-point)))
-    (cond
-     ;; Case 1. Element at point is NOT #+transclude:
-     ((not (and (string-equal "keyword" (org-element-type elm))
-                (string-equal "TRANSCLUDE" (org-element-property :key elm))))
-      (user-error
-       "Not at a transclude keyword or transclusion in a block at point %d, line %d"
-       (point) (org-current-line)))
-     ;; Case 2. #+transclude inside another transclusion
-     ((org-transclusion-within-transclusion-p)
-      (user-error
-       "Cannot transclude in another transclusion at point %d, line %d"
-       (point) (org-current-line)))
-     (t
-      t))))
+  (cond
+   ;; Case 1. Element at point is NOT #+transclude:
+   ((not (org-transclusion-at-keyword-p))
+    (user-error
+     "Not at a transclude keyword or transclusion in a block at point %d, line %d"
+     (point) (org-current-line)))
+   ;; Case 2. #+transclude inside another transclusion
+   ((org-transclusion-within-transclusion-p)
+    (user-error
+     "Cannot transclude in another transclusion at point %d, line %d"
+     (point) (org-current-line)))
+   (t
+    t)))
 
 (defun org-transclusion-fix-common-misspelling ()
   "Fix \"#+transclude\" by appending a colon \":\".
@@ -1448,6 +1464,29 @@ used."
                 (text-property-search-backward 'org-transclusion-id value t))
                (beg (prop-match-beginning prop-match-backward)))
       (list :id id :location (cons beg end)))))
+
+(defun org-transclusion-at-keyword-p ()
+  "Return non-nil if the current line is on #+TRANSCLUDE: keyword."
+  ;;
+  ;; BUG (I believe): The following edge case is considered part of keyword
+  ;; where "|" is the cursor.
+  ;;
+  ;; Avoid the following situation to be recognized as "t"
+  ;;
+  ;;   #+transclude: [[link]]
+  ;;   |
+  ;;   New paragraph starts
+  (let ((edge-case-p
+         (save-excursion
+           (and (looking-at-p "$")
+                (not (bobp))
+                (progn (forward-char -1)
+                       (looking-at-p "$")))))
+        (element (org-element-at-point)))
+    ;; If edge-case, do not transclude.
+    (unless edge-case-p
+      (and (string-equal "keyword" (org-element-type element))
+           (string-equal "TRANSCLUDE" (org-element-property :key element))))))
 
 (defun org-transclusion-within-transclusion-p ()
   "Return t if the current point is within a transclusion region."
@@ -1778,9 +1817,6 @@ ensure the settings revert to the user's setting prior to
 
 (defun org-transclusion-promote-adjust-after ()
   "Adjust the level information after promote/demote."
-  ;; find org-transclusion-beg-mkr. If the point is directly on the starts,
-  ;; you need to find it in the headline title.  Assume point at beginning of
-  ;; the subtree after promote/demote
   (let* ((pos (next-property-change (point) nil (line-end-position)))
          (keyword-plist (get-text-property pos
                                            'org-transclusion-orig-keyword))
@@ -1797,17 +1833,17 @@ ensure the settings revert to the user's setting prior to
 (defun org-transclusion-promote-or-demote-subtree (&optional demote)
   "Promote or demote transcluded subtree.
 When DEMOTE is non-nil, demote."
-  (if (not (org-transclusion-within-transclusion-p))
-      (message "Not in a transcluded headline.")
-    (let ((inhibit-read-only t)
-          (beg (get-text-property (point) 'org-transclusion-beg-mkr)))
-      (let ((pos (point)))
-        (save-excursion
-          (goto-char beg)
-          (when (org-at-heading-p)
-            (if demote (org-demote-subtree) (org-promote-subtree))
-            (org-transclusion-promote-adjust-after)))
-        (goto-char pos)))))
+  (unless (org-transclusion-within-transclusion-p)
+    (user-error "Not in a transcluded headline."))
+  (let* ((inhibit-read-only t)
+         (beg (car (plist-get (org-transclusion-at-point) :location)))
+         (pos (point)))
+    (save-excursion
+      (goto-char beg)
+      (when (org-at-heading-p)
+        (if demote (org-demote-subtree) (org-promote-subtree))
+        (org-transclusion-promote-adjust-after)))
+    (goto-char pos)))
 
 ;;-----------------------------------------------------------------------------
 ;;;; Functions to support Org-export
