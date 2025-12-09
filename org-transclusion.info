@@ -1,4 +1,4 @@
-This is docyrbVto.info, produced by makeinfo version 6.8 from
+This is doc1CK9Lm.info, produced by makeinfo version 7.1.1 from
 org-transclusion.texi.
 
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -20,7 +20,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docyrbVto.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
+File: doc1CK9Lm.info,  Node: Top,  Next: Example Use Cases & Main Features,  Up: (dir)
 
 Org-transclusion User Manual
 ****************************
@@ -65,7 +65,7 @@ Copyright (C) 2021 Free Software Foundation, Inc.
 * Index - User Options::         Customizable variables & faces
 * GNU Free Documentation License::
 
-— The Detailed Node Listing —
+-- The Detailed Node Listing --
 
 Usage
 
@@ -88,7 +88,7 @@ Transclude range of lines for text and source files
 
 * lines property to specify a range of lines::
 * end property to specify a search term to dynamically look for the end of a range::
-* ‘thing-at-point’ or ‘thingatpt’ property to specify a “thing” to transclude from the source.: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source.
+* ‘thing-at-point’ or ‘thingatpt’ property to specify a "thing" to transclude from the source.: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source.
 * Transclude HTML content with Pandoc::
 * Chunks of noweb files::
 
@@ -111,7 +111,7 @@ Credits
 
 
 
-File: docyrbVto.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
+File: doc1CK9Lm.info,  Node: Example Use Cases & Main Features,  Next: Installation,  Prev: Top,  Up: Top
 
 1 Example Use Cases & Main Features
 ***********************************
@@ -122,7 +122,7 @@ including his own.
 Book writing
      You have a collection of notes.  You can quickly transclude
      paragraphs and sections from your notes and put together a draft.
-     As transclusions are links, it’s easy to re-organize them into
+     As transclusions are links, it's easy to re-organize them into
      different sequences to see which way works the best.
 
 Academic writing
@@ -158,7 +158,7 @@ Main Features:
      ‘org-transclusion-add’ into two parts enables functions in
      ‘org-transclusion-add-functions’ to be asynchronous.
 
-   • Keep the file system clear of the copies of text content –
+   • Keep the file system clear of the copies of text content -
      Org-transclusion tries hard to save only the links to the file
      system
 
@@ -173,13 +173,13 @@ Main Features:
      always up-to-date with the evolving source files
 
    • For program source files, transclude parts or whole code directly
-     into Org’s source block to leverage the rich Org features including
+     into Org's source block to leverage the rich Org features including
      noweb style syntax
 
    • Extend Org-transclusion with its extension framework
 
 
-File: docyrbVto.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
+File: doc1CK9Lm.info,  Node: Installation,  Next: Getting Started,  Prev: Example Use Cases & Main Features,  Up: Top
 
 2 Installation
 **************
@@ -226,7 +226,7 @@ install the package and configure the keybindings.
                     :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 
 
-File: docyrbVto.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
+File: doc1CK9Lm.info,  Node: Getting Started,  Next: Usage,  Prev: Installation,  Up: Top
 
 3 Getting Started
 *****************
@@ -264,7 +264,7 @@ line with ‘#+transclusion:’ keyword added in front of a copy of the
 original link in the next empty line.
 
 The transcluded paragraphs will be visually marked with a vertical line
-“| ” in the fringe (on graphical display) or in the beginning of line
+"| " in the fringe (on graphical display) or in the beginning of line
 (on a text-only terminal) by default.  The source (original) of the
 transcluded paragraphs will be also visually marked with an overlay.
 The appearance of these visual elements can be customized (refer to
@@ -276,7 +276,7 @@ text from (its source buffer).
 
 You can call a number of useful commands with a single letter (by
 default).  For example, you can press ‘o’ to open the source buffer of
-the transclusion at point, or ‘O’ (capital “o”) to open and move to it.
+the transclusion at point, or ‘O’ (capital "o") to open and move to it.
 Press ‘g’ to refresh the transclusion.  Press ‘e’ to start live-sync
 edit.  For more detail, inspect the documentation of each command.
 Press ‘d’ to remove the transcluded content, putting the original
@@ -310,7 +310,7 @@ content you transclude.  Explore the rest of the user manual and play
 with Org-transclusion to get familiar with it.
 
 
-File: docyrbVto.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
+File: doc1CK9Lm.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started,  Up: Top
 
 4 Usage
 *******
@@ -329,7 +329,7 @@ File: docyrbVto.info,  Node: Usage,  Next: Customizing,  Prev: Getting Started, 
 * Extensions::
 
 
-File: docyrbVto.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
+File: doc1CK9Lm.info,  Node: Org-transclusion mode activate and deactivate,  Next: Org links supported,  Up: Usage
 
 4.1 Org-transclusion mode, activate, and deactivate
 ===================================================
@@ -375,7 +375,7 @@ You can override the ‘:disable-auto’ property by manually calling
 Features:: for a list).
 
 
-File: docyrbVto.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
+File: doc1CK9Lm.info,  Node: Org links supported,  Next: Transclude over a network with hyper// http// etc,  Prev: Org-transclusion mode activate and deactivate,  Up: Usage
 
 4.2 Org links supported
 =======================
@@ -398,7 +398,7 @@ Transclusion has been tested to work for the following types of links:
      intended.
 
 For transcluding a specific paragraph, there are two main ways: Org
-Mode’s dedicated-target
+Mode's dedicated-target
 (https://orgmode.org/manual/Internal-Links.html#Internal-Links) and
 ‘:only-contents’ property.
 
@@ -417,7 +417,7 @@ For the ‘:only-contents’ property, refer to sub-section *note Filtering
 Org elements per transclusion: Filter Org elements per transclusion.
 
 
-File: docyrbVto.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
+File: doc1CK9Lm.info,  Node: Transclude over a network with hyper// http// etc,  Next: Control levels of headlines per transclusion,  Prev: Org links supported,  Up: Usage
 
 4.3 Transclude over a network with ‘hyper://’, ‘http://’, etc.
 ==============================================================
@@ -426,7 +426,7 @@ Version 1.4 includes changes which make it possible for asynchronously
 transclude content, e.g., over a network.  To transclude content via
 ‘http://’, first install the ‘org-transclusion-http’ extension (see
 *note extensions: Extensions.), then run ‘M-x org-transclusion-add’ on
-the following link to transclude the HTML element with the “#emacs” id:
+the following link to transclude the HTML element with the "#emacs" id:
 
      #+transclude: [[https://ushin.org/software.html#emacs]]
 
@@ -439,7 +439,7 @@ inside the ‘/software.org’ file inside the USHIN hyperdrive:
      #+transclude: [[hyper://aaj45d88g4eenu76rpmwzjiabsof1w8u6fufq6oogyhjk1ubygxy/software.org#%3A%3A%23emacs]]
 
 
-File: docyrbVto.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
+File: doc1CK9Lm.info,  Node: Control levels of headlines per transclusion,  Next: Filter Org elements per transclusion,  Prev: Transclude over a network with hyper// http// etc,  Up: Usage
 
 4.4 Control levels of headlines per transclusion
 ================================================
@@ -453,7 +453,7 @@ Use the ‘:level’ property with a value of single digit number from 1 to
      #+transclude: [[file:path/to/file.org::*Headline]] :level 2
 
 The top level of the transcluded headline will be set to the value of
-‘:level’ property – in this example, level 2 regardless of that in the
+‘:level’ property - in this example, level 2 regardless of that in the
 source.  When the headline contains sub-headlines, they will be all
 automatically promoted or demoted to align according to how many levels
 the top of the subtree will move.
@@ -468,19 +468,19 @@ Other ways to control include the following.
 ‘org-transclusion-make-from-link’
      Make a transclusion keyword from a link at point.  If you pass a
      positive number 1-9 with ‘digit-argument’ (e.g.  prefix ‘M-x’ with
-     ‘C-2’ to pass “2”), this function automatically puts the ‘:level’
+     ‘C-2’ to pass "2"), this function automatically puts the ‘:level’
      property to the resultant transclusion keyword.
 
 ‘org-transclusion-promote-subtree’
-     Promote transcluded subtree at point.  Mapped to “P” (capital “p”)
+     Promote transcluded subtree at point.  Mapped to "P" (capital "p")
      by default in ‘org-transclusion-map’
 
 ‘org-transclusion-demote-subtree’
-     Demote transcluded subtree at point.  Mapped to “D” (capital “d”)
+     Demote transcluded subtree at point.  Mapped to "D" (capital "d")
      by default in ‘org-transclusion-map’
 
 
-File: docyrbVto.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
+File: doc1CK9Lm.info,  Node: Filter Org elements per transclusion,  Next: Detach transclusion and copy source buffer,  Prev: Control levels of headlines per transclusion,  Up: Usage
 
 4.5 Filter Org elements per transclusion
 ========================================
@@ -504,15 +504,15 @@ transclusions globally.  You can think of them as the global default.
 ‘org-transclusion-include-first-section’
      This customizing variable globally defines whether or not to
      include the first section of the source Org file.  The first
-     section is the part before the first headline – that’s the section
+     section is the part before the first headline - that's the section
      that typically contains ‘#+title’, ‘#+author’, and so on.  Many
      people also write notes in it without adding any headlines.  Note
-     that this user option’s default is now ‘t’ (changed from ‘nil’ as
-     users seem to spend time to “correct” this issue).  Turn it to ‘t’
+     that this user option's default is now ‘t’ (changed from ‘nil’ as
+     users seem to spend time to "correct" this issue).  Turn it to ‘t’
      if you wish to transclude the content from the first section of
-     your Org files.  If you wish to exclude the “meta data” defined by
+     your Org files.  If you wish to exclude the "meta data" defined by
      ‘#+title’ and others, exclude ‘keyword’ as described in this
-     section – these meta data are defined with using the ‘keyword’
+     section - these meta data are defined with using the ‘keyword’
      element of Org Mode.
 
      Refer also to the *note sub-section on this user option: Include
@@ -549,7 +549,7 @@ You can combine ‘:only-contents’ and ‘:exclude-elements’ to control how
 you transclude a subtree.  With these properties, you can really have
 great control over what to include and exclude.  It might be a little
 overwhelming at a time but the changes via properties are easy to change
-– simply press ‘d’ to remove the transclusion, change the properties,
+- simply press ‘d’ to remove the transclusion, change the properties,
 and transclude again to see a new result.
 
 ‘:expand-links’
@@ -575,11 +575,10 @@ link expanded (1)
 
    ---------- Footnotes ----------
 
-   (1) “Expanding” in Emacs means converting a relative file name to an
-absolute one.  Info node ‘(elisp) File-Name-Expansion’
+   (1) <https://github.com/nrnrnr/noweb>
 
 
-File: docyrbVto.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
+File: doc1CK9Lm.info,  Node: Notes on excluding the headline element,  Up: Filter Org elements per transclusion
 
 4.5.1 Notes on excluding the headline element
 ---------------------------------------------
@@ -591,7 +590,7 @@ content of the top-most headline of the subtrees.
 If you are transcluding only one subtree, this should be intuitive.  If
 you transclude a whole buffer, you might be transcluding multiple
 subtrees.  In some cases, this can be a little anti-intuitive.  In the
-following examples, you will be transcluding three subtrees – even
+following examples, you will be transcluding three subtrees - even
 though the first headline levels are lower than the third one, the first
 two are still the top-most level of their own respective subtrees.
 
@@ -603,7 +602,7 @@ two are still the top-most level of their own respective subtrees.
        Content of Headline
 
 
-File: docyrbVto.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
+File: doc1CK9Lm.info,  Node: Detach transclusion and copy source buffer,  Next: Live-sync edit,  Prev: Filter Org elements per transclusion,  Up: Usage
 
 4.6 Detach transclusion and copy source buffer
 ==============================================
@@ -621,7 +620,7 @@ of 1.4.0.
 
      In addition, you can press ‘C-d’ directly on the transclusion at
      point to detach it.  This is because the command is bound to ‘C-d’
-     by default in ’org-transclusion-map’.
+     by default in 'org-transclusion-map'.
 
    • ‘org-transclusion-refresh’ now accepts universal argument such as
      ‘C-u M-x org-transclusion-refresh’ and detaches the transclusion at
@@ -629,14 +628,14 @@ of 1.4.0.
 
      You can undo this operation.
 
-   • ‘org-transclusion-add’ now accepts universal argument such as ’C-u
-     M-x org-transclusion-add’ and copies the source content rather than
+   • ‘org-transclusion-add’ now accepts universal argument such as 'C-u
+     M-x org-transclusion-add' and copies the source content rather than
      transclude it.
 
      You can undo this operation.
 
 
-File: docyrbVto.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
+File: doc1CK9Lm.info,  Node: Live-sync edit,  Next: Transclude source file into src-block,  Prev: Detach transclusion and copy source buffer,  Up: Usage
 
 4.7 Live-sync edit
 ==================
@@ -648,7 +647,7 @@ the region being live-synced and brings up another buffer that visits
 the source file of the transclusion.  The source buffer will also have a
 corresponding overlay to the region being edited and live-synced.
 
-If you have other windows open, they will be temporarily hidden –
+If you have other windows open, they will be temporarily hidden -
 Org-transclusion will remembers your current window layout and attempts
 to recover it when you exit live-sync edit.
 
@@ -668,8 +667,8 @@ keybindings (e.g.  ‘evil-mode’), it is advised that you review the
 default keybindings.  You can customize the local keybindings for the
 live-sync region by ‘org-transclusion-live-sync-map’.
 
-*Note*: During live-sync edit, file’s content gets saved to the file
-system as is – i.e.  the transcluded text will be saved instead of the
+*Note*: During live-sync edit, file's content gets saved to the file
+system as is - i.e.  the transcluded text will be saved instead of the
 ‘#+transclude:’ keyword.  If you kill buffer or quit Emacs, other hooks
 will still remove the transclusion to keep the file clear of the
 transcluded copy, leaving only the keyword in the file system.
@@ -687,7 +686,7 @@ transcluded copy, leaving only the keyword in the file system.
         † Also inherits ‘org-mode-map’
 
 
-File: docyrbVto.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
+File: doc1CK9Lm.info,  Node: Transclude source file into src-block,  Next: Transclude range of lines for text and source files,  Prev: Live-sync edit,  Up: Usage
 
 4.8 Transclude source file into src-block
 =========================================
@@ -695,7 +694,7 @@ File: docyrbVto.info,  Node: Transclude source file into src-block,  Next: Trans
 This feature is provided as an *note extension: Extensions. (default
 on).
 
-You can transclude a source file into an Org’s src block.  Use the
+You can transclude a source file into an Org's src block.  Use the
 ‘:src’ property and specify the language you would like to use like
 this:
 
@@ -722,7 +721,7 @@ transcluded into src-block.  It is planned to be added to the next
 stable release.
 
 
-File: docyrbVto.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
+File: doc1CK9Lm.info,  Node: Transclude range of lines for text and source files,  Next: Extensions,  Prev: Transclude source file into src-block,  Up: Usage
 
 4.9 Transclude range of lines for text and source files
 =======================================================
@@ -737,12 +736,12 @@ following properties to specify a range of lines to transclude.
 
 * lines property to specify a range of lines::
 * end property to specify a search term to dynamically look for the end of a range::
-* ‘thing-at-point’ or ‘thingatpt’ property to specify a “thing” to transclude from the source.: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source.
+* ‘thing-at-point’ or ‘thingatpt’ property to specify a "thing" to transclude from the source.: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source.
 * Transclude HTML content with Pandoc::
 * Chunks of noweb files::
 
 
-File: docyrbVto.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: doc1CK9Lm.info,  Node: lines property to specify a range of lines,  Next: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
 4.9.1 ‘:lines’ property to specify a range of lines
 ---------------------------------------------------
@@ -752,7 +751,7 @@ file.  Use the ‘:lines’ property like this.
 
      #+transclude: [[file:../../test/test.txt]] :lines 3-5
 
-The rage is specified by the number “3-5”; in this case, lines from 3 to
+The rage is specified by the number "3-5"; in this case, lines from 3 to
 5, both lines inclusive.
 
 To transclude a single line, have the the same number in both places
@@ -766,26 +765,26 @@ line 10 to the end of file.
 You can combine ‘:lines’ with ‘:src’ to transclude only a certain range
 of source files (Example 1 below).
 
-For Org’s file links, you can use search options
-(https://orgmode.org/manual/Search-Options.html) specified by the “::”
+For Org's file links, you can use search options
+(https://orgmode.org/manual/Search-Options.html) specified by the "::"
 (two colons) notation.  When a search finds a line that includes the
 string, the Org-transclude counts it as the starting line 1 for the
 ‘:lines’ property.
 
 Example 1: This transcludes the four lines of the source file from the
-line that contains string “id-1234” (including that line counted as line
+line that contains string "id-1234" (including that line counted as line
 1).
      #+transclude: [[file:../../test/python-1.py::id-1234]] :lines 1-4 :src python
 
 Example 2: This transcludes only the single line that contains the line
-found by the search option for text string “Transcendental Ontology”
+found by the search option for text string "Transcendental Ontology"
      #+transclude: [[file:../../test/test.txt::Transcendental Ontology]] :lines 1-1
 
      Note: Search-options ‘::/regex/’ and ‘::number’ do not work as
      intended.
 
 
-File: docyrbVto.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
+File: doc1CK9Lm.info,  Node: end property to specify a search term to dynamically look for the end of a range,  Next: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Prev: lines property to specify a range of lines,  Up: Transclude range of lines for text and source files
 
 4.9.2 ‘:end’ property to specify a search term to dynamically look for the end of a range
 -----------------------------------------------------------------------------------------
@@ -803,8 +802,8 @@ will not contain string ‘id-1234 end here’).
 
 You can also combine ‘:lines’ with ‘:end’.  It will only displace the
 beginning, and the end part of the range (the second number after the
-hyphen “-”) is ignored.  In the same example, the beginning of the range
-is the next line after “id-1234” (line 2).  Instead of transcluding all
+hyphen "-") is ignored.  In the same example, the beginning of the range
+is the next line after "id-1234" (line 2).  Instead of transcluding all
 the text until the end of the buffer, the end is defined by the ‘:end’
 property (one line before the string ‘id-1234 end here’ is found).
 
@@ -812,13 +811,13 @@ Example 3:
      #+transclude: [[file:../../test/python-1.py::id-1234]] :lines 2- :src python :end "id-1234 end here"
 
 
-File: docyrbVto.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
+File: doc1CK9Lm.info,  Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Next: Transclude HTML content with Pandoc,  Prev: end property to specify a search term to dynamically look for the end of a range,  Up: Transclude range of lines for text and source files
 
-4.9.3 ‘:thing-at-point’ or ‘:thingatpt’ property to specify a “thing” to transclude from the source.
+4.9.3 ‘:thing-at-point’ or ‘:thingatpt’ property to specify a "thing" to transclude from the source.
 ----------------------------------------------------------------------------------------------------
 
 You can add ‘:thing-at-point’ or ‘:thingatpt’ (they are synonyms with
-each other and both work) property to transclude a certain “thing” at
+each other and both work) property to transclude a certain "thing" at
 point to be transcluded.  The following text elements have been tested
 to work:
 
@@ -829,24 +828,24 @@ to work:
 
      Note: As it stands now, you cannot use ‘:thing-at-point’ or
      ‘:thingatpt’ to specify the precise beginning of the thing within a
-     line – it is always the beginning of the line.
+     line - it is always the beginning of the line.
 
      Note: The definition of sentence is controlled by various variables
      in Emacs.  It is suggested to consult the documentation of function
      ‘sentence-end’.  For those who do not use double-space after a
      period (in the language this is relevant), it is probably more
      intuitive to turn off customizing ‘sentence-end-double-space’.  The
-     default behavior is this: “Non-nil means a single space does not
-     end a sentence.”
+     default behavior is this: "Non-nil means a single space does not
+     end a sentence."
 
 See Example 4.  When you have a text file for prose, you can use
-paragraph or sentence as a “thing” to transclude.  In this example, the
+paragraph or sentence as a "thing" to transclude.  In this example, the
 beginning of the source of transclude is specified by the search option
-with “::Once upon a time”.  The two colons “::” immediately following
+with "::Once upon a time".  The two colons "::" immediately following
 the file name denote the search option, which is a built-in Org syntax.
-Then the paragraph or sentence beginning “Once upon a time” is
+Then the paragraph or sentence beginning "Once upon a time" is
 transcluded.  When the source file contains multiple occurrences of
-“Once upon a time”, the first one is taken.
+"Once upon a time", the first one is taken.
 
 Example 4:
      #+transclude: [[./things-at-point-dir/story.txt::Once upon a time][story]]  :thing-at-point paragraph
@@ -854,7 +853,7 @@ Example 4:
      #+transclude: [[./things-at-point-dir/story.txt::Once upon a time][story]]  :thingatpt sentence
 
 You can combine ‘:thing-at=point’ (or ‘:thingatpt’) with ‘:src’ property
-so that the transcluded text is wrapped in Org’s source block.  Example
+so that the transcluded text is wrapped in Org's source block.  Example
 5 shows a way to do so.  id​:​1234567890 is assumed to be present as
 comment in the source file.
 
@@ -866,7 +865,7 @@ Example 5:
      #+transclude: [[./things-at-point-dir/baz.el::id:1234567890][barz-baz-fuzz]]  :src elisp :thingatpt defun
 
 
-File: docyrbVto.info,  Node: Transclude HTML content with Pandoc,  Next: Chunks of noweb files,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
+File: doc1CK9Lm.info,  Node: Transclude HTML content with Pandoc,  Next: Chunks of noweb files,  Prev: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source,  Up: Transclude range of lines for text and source files
 
 4.9.4 Transclude HTML content with Pandoc
 -----------------------------------------
@@ -879,7 +878,7 @@ off).
 
      #+transclude: [[file:../test/source-html-no-ext]]
 
-Since it’s not currently possible to add anchor links to local ‘file:’
+Since it's not currently possible to add anchor links to local ‘file:’
 Org links, HTML transclusions always render the entire document as Org.
 However, packages which transclude HTML documents over a network
 protocol that supports link fragments, such as
@@ -890,14 +889,14 @@ are able to render specific HTML elements by tag (see *note subsection:
 Transclude over a network with hyper// http// etc.).
 
 
-File: docyrbVto.info,  Node: Chunks of noweb files,  Prev: Transclude HTML content with Pandoc,  Up: Transclude range of lines for text and source files
+File: doc1CK9Lm.info,  Node: Chunks of noweb files,  Prev: Transclude HTML content with Pandoc,  Up: Transclude range of lines for text and source files
 
 4.9.5 Chunks of noweb files
 ---------------------------
 
 It is possible to transclude named chunks of noweb(1) files using the
 ‘:noweb-chunk’ property.  The name of the chunk is appended to the file
-name, separated by ‘::’.
+name, separated by '::'.
 
 For example to transclude chunk ‘chunk-A’ from file ‘file.nw’ do this:
 
@@ -917,11 +916,10 @@ other noweb links.
 
    ---------- Footnotes ----------
 
-   (1) “Expanding” in Emacs means converting a relative file name to an
-absolute one.  Info node ‘(elisp) File-Name-Expansion’
+   (1) <https://github.com/nrnrnr/noweb>
 
 
-File: docyrbVto.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
+File: doc1CK9Lm.info,  Node: Extensions,  Prev: Transclude range of lines for text and source files,  Up: Usage
 
 4.10 Extensions
 ===============
@@ -930,7 +928,7 @@ Org-transclusion provides a simple extension framework, where you can
 use ‘customize’ to selectively add new features.
 
 If you use ‘customize’, the features are loaded automatically.  Note
-that it does not “unload” the feature until you relaunch Emacs.
+that it does not "unload" the feature until you relaunch Emacs.
 
 If you do not use ‘customize’ (e.g.  Doom), you may need to explicitly
 require an extension.  For example, to activate
@@ -956,7 +954,7 @@ Currently, the following extensions are available.
      It is meant for non-Org files such as program source and text files
 
 (on by default) ‘org-transclusion-font-lock’
-     Add font-lock for ‘#+transclude’.  Org mode’s standard syntax
+     Add font-lock for ‘#+transclude’.  Org mode's standard syntax
      treats the combination of a ‘#+transclude:’ keyword and a link used
      by Org-transclusion as a keyword.  This means it applies the
      ‘org-meta-line’ face and the link part cannot be toggled as a
@@ -989,17 +987,17 @@ Currently, the following extensions are available.
        (require 'hyperdrive-org-transclusion))
 
 
-File: docyrbVto.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
+File: doc1CK9Lm.info,  Node: Customizing,  Next: Known Limitations,  Prev: Usage,  Up: Top
 
 5 Customizing
 *************
 
 You can customize settings in the customization group
-‘org-transclusion’.
+'org-transclusion'.
 
 ‘org-transclusion-extensions’
      Defines extensions to be loaded with org-transclusion.el.  If you
-     use ‘customize’, the extensions are loaded by it.  If you don’t,
+     use ‘customize’, the extensions are loaded by it.  If you don't,
      you likely need to explicitly use ‘require’ to load them.  See
      *note sub-section: Extensions.
 
@@ -1020,22 +1018,22 @@ You can customize settings in the customization group
 ‘org-transclusion-open-source-display-action-list’
      You can customize the way the ‘org-transclusion-open-source’
      function displays the source buffer for the transclusion.  You
-     specify the “action” in the way defined by the built-in
+     specify the "action" in the way defined by the built-in
      ‘display-buffer’ function.  Refer to its in-system documentation
      (with ‘C-h f’) for the accepted values.  ‘M-x customize’ can also
      guide you on what types of values are accepted.
 
 ‘org-transclusion-mode-lighter’
      Define the lighter for Org-transclusion minor mode.  The default is
-     “ OT”.
+     " OT".
 
 ‘org-transclusion-after-add-functions’
      Functions to be called after a transclusion content has been added.
      The hook runs after the content and the read-only text property
      have been added so it is not supposed to manipulate the content but
      to add further text properties.  For example, it is used by the
-     ‘org-transclusion-indent-mode’ extension to support
-     ‘org-indent-mode’.  The functions are called with arguments beg and
+     'org-transclusion-indent-mode' extension to support
+     'org-indent-mode'.  The functions are called with arguments beg and
      end, pointing to the beginning and end of the transcluded content.
 
 The hook can be also used to activate ‘org-latex-preview’ for
@@ -1052,7 +1050,7 @@ transclusions:
 * Keybindings::
 
 
-File: docyrbVto.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
+File: doc1CK9Lm.info,  Node: Customizable filter to exclude certain Org elements,  Next: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.1 Customizable filter to exclude certain Org elements
 =======================================================
@@ -1066,7 +1064,7 @@ ID, etc.).  There is no filter for non-Org files.
 
 It is a list of symbols, and the default is ‘(property-drawer)’.  The
 accepted values are the ones defined by ‘org-element-all-elements’
-(Org’s standard set of elements; refer to its documentation for an
+(Org's standard set of elements; refer to its documentation for an
 exhaustive list).
 
 You can also fine-tune the exclusion filter per transclusion.  Refer to
@@ -1074,7 +1072,7 @@ the sub-section on *note filtering Org elements per transclusion: Filter
 Org elements per transclusion.
 
 
-File: docyrbVto.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
+File: doc1CK9Lm.info,  Node: Include the section before the first headline (Org file only),  Next: Faces & fringe bitmap,  Prev: Customizable filter to exclude certain Org elements,  Up: Customizing
 
 5.2 Include the section before the first headline (Org file only)
 =================================================================
@@ -1086,7 +1084,7 @@ Set it to ‘t’ (or non-nil) to transclude the first section.  It also
 works when the first section is followed by headlines.
 
 
-File: docyrbVto.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
+File: doc1CK9Lm.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: Include the section before the first headline (Org file only),  Up: Customizing
 
 5.3 Faces & fringe bitmap
 =========================
@@ -1097,7 +1095,7 @@ File: docyrbVto.info,  Node: Faces & fringe bitmap,  Next: Keybindings,  Prev: I
 * Faces for the fringes next to transcluded region and source region::
 
 
-File: docyrbVto.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
+File: doc1CK9Lm.info,  Node: Face for the #+transclude keyword,  Next: Faces for the fringes next to transcluded region and source region,  Up: Faces & fringe bitmap
 
 5.3.1 Face for the ‘#+transclude’ keyword
 -----------------------------------------
@@ -1110,7 +1108,7 @@ on).
      the ‘org-transclusion-keyword’ face.
 
 
-File: docyrbVto.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
+File: doc1CK9Lm.info,  Node: Faces for the fringes next to transcluded region and source region,  Prev: Face for the #+transclude keyword,  Up: Faces & fringe bitmap
 
 5.3.2 Faces for the fringes next to transcluded region and source region
 ------------------------------------------------------------------------
@@ -1122,7 +1120,7 @@ foreground colors to these custom faces.
    • ‘org-transclusion-source-fringe’
    • ‘org-transclusion-fringe’
 
-To customize a face, it’s probably the easiest to use ‘M-x
+To customize a face, it's probably the easiest to use ‘M-x
 customize-face’.  If you want to use Elisp for some reason (e.g.  on
 Doom), something like this below should set faces.  Experiment with the
 colors of your choice.  By default, the faces above have no values.
@@ -1132,8 +1130,8 @@ colors of your choice.  By default, the faces above have no values.
       :foreground "green"
       :background "green")
 
-For colors, where “green” is, you can also use something like “#62c86a”
-(Emacs calls it “RGB triple”; you can refer to in-system manual Emacs >
+For colors, where "green" is, you can also use something like "#62c86a"
+(Emacs calls it "RGB triple"; you can refer to in-system manual Emacs >
 Colors).  You might also like to refer to a list of currently defined
 faces in your Emacs by ‘list-faces-display’.
 
@@ -1158,7 +1156,7 @@ some background color to source and transclusion.
      terminal).
 
 
-File: docyrbVto.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
+File: doc1CK9Lm.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Customizing
 
 5.4 Keybindings
 ===============
@@ -1193,15 +1191,15 @@ File: docyrbVto.info,  Node: Keybindings,  Prev: Faces & fringe bitmap,  Up: Cus
         † Also inherits ‘org-mode-map’
 
 
-File: docyrbVto.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
+File: doc1CK9Lm.info,  Node: Known Limitations,  Next: Credits,  Prev: Customizing,  Up: Top
 
 6 Known Limitations
 *******************
 
-Note this section is still incomplete, not exhaustive for “known”
+Note this section is still incomplete, not exhaustive for "known"
 limitations.
 
-   • Org link’s search-options ‘::/regex/’ and ‘::number’ do not work as
+   • Org link's search-options ‘::/regex/’ and ‘::number’ do not work as
      intended.
 
    • ‘org-transclusion-live-sync-start’ does not support all Org
@@ -1218,18 +1216,18 @@ limitations.
      docstring of function
      ‘org-transclusion-live-sync-enclosing-element’.
 
-     Work is in progress to lift this limitation but I’m still
+     Work is in progress to lift this limitation but I'm still
      experimenting different ideas.
 
    • ‘org-indent-mode’ may not work well with Org-transclusion A new
      extension has been added to support ‘org-indent-mode’ Refer to
      *note this section: Extensions.
 
-   • Doom’s customization may interfere with Org-transclusion Refer to
+   • Doom's customization may interfere with Org-transclusion Refer to
      issue #52 (https://github.com/nobiot/org-transclusion/issues/52).
      The symptom is that in Doom you get an error message that includes
-     this: “progn: ‘recenter’ing a window that does not display
-     current-buffer.” Adding this in your configuration has been
+     this: "progn: ‘recenter’ing a window that does not display
+     current-buffer."  Adding this in your configuration has been
      reported to fix the issue:
 
      ‘(advice-remove 'org-link-search
@@ -1238,10 +1236,10 @@ limitations.
      It is probably rather drastic a measure.  I will appreciate it if
      you find a less drastic way that works.  Thank you.
 
-   • Org refile does not work “properly” on the transcluded headlines
+   • Org refile does not work "properly" on the transcluded headlines
      Refer to issue #20
-     (https://github.com/nobiot/org-transclusion/issues/20).  I don’t
-     intend to support this – refile the source, not the transcluded
+     (https://github.com/nobiot/org-transclusion/issues/20).  I don't
+     intend to support this - refile the source, not the transcluded
      copy.
 
    • Undo detach does not add the overlay back on the source This should
@@ -1250,11 +1248,11 @@ limitations.
      the source while the source overlay is not present.
 
    • For ‘:thing-at-point’ or ‘:thingatpt’, you cannot use them to
-     specify the precise beginning of the thing within a line – it is
+     specify the precise beginning of the thing within a line - it is
      always the beginning of the line.
 
 
-File: docyrbVto.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
+File: doc1CK9Lm.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitations,  Up: Top
 
 7 Credits
 *********
@@ -1265,7 +1263,7 @@ File: docyrbVto.info,  Node: Credits,  Next: Contributing,  Prev: Known Limitati
 * Text-Clone::
 
 
-File: docyrbVto.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
+File: doc1CK9Lm.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  Up: Credits
 
 7.1 Original idea by John Kitchin
 =================================
@@ -1319,7 +1317,7 @@ File: docyrbVto.info,  Node: Original idea by John Kitchin,  Next: Text-Clone,  
      a name/ID.
 
 
-File: docyrbVto.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
+File: doc1CK9Lm.info,  Node: Text-Clone,  Prev: Original idea by John Kitchin,  Up: Credits
 
 7.2 Text-Clone
 ==============
@@ -1332,7 +1330,7 @@ user named Tobias in March 2020.  It can be found at
 The text-clone library takes this line of work further.
 
 
-File: docyrbVto.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
+File: doc1CK9Lm.info,  Node: Contributing,  Next: Index - Features,  Prev: Credits,  Up: Top
 
 8 Contributing
 **************
@@ -1346,15 +1344,15 @@ File: docyrbVto.info,  Node: Contributing,  Next: Index - Features,  Prev: Credi
 
 Org-transclusion is part of GNU ELPA and thus copyrighted by the Free
 Software Foundation (http://fsf.org) (FSF). This means that anyone who
-is making a substantive code contribution will need to “assign the
+is making a substantive code contribution will need to "assign the
 copyright for your contributions to the FSF so that they can be included
-in GNU Emacs” (Org Mode website
+in GNU Emacs" (Org Mode website
 (https://orgmode.org/contribute.html#copyright)).
 
 Thank you.
 
 
-File: docyrbVto.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
+File: doc1CK9Lm.info,  Node: Index - Features,  Next: Index - Commands,  Prev: Contributing,  Up: Top
 
 Appendix A Index - Features
 ***************************
@@ -1403,13 +1401,13 @@ Appendix A Index - Features
                                                                 (line 6)
 * Transclude HTML content with Pandoc:   Transclude HTML content with Pandoc.
                                                                 (line 6)
-* Transclude into Org’s src-block:       Transclude source file into src-block.
+* Transclude into Org's src-block:       Transclude source file into src-block.
                                                                 (line 6)
 * Transclude range of lines:             Transclude range of lines for text and source files.
                                                                 (line 6)
 
 
-File: docyrbVto.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
+File: doc1CK9Lm.info,  Node: Index - Commands,  Next: Index - User Options,  Prev: Index - Features,  Up: Top
 
 Appendix B Index - Commands
 ***************************
@@ -1442,7 +1440,7 @@ Appendix B Index - Commands
 * org-transclusion-refresh:              Getting Started.       (line 6)
 
 
-File: docyrbVto.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
+File: doc1CK9Lm.info,  Node: Index - User Options,  Next: GNU Free Documentation License,  Prev: Index - Commands,  Up: Top
 
 Appendix C Index - User Options
 *******************************
@@ -1481,7 +1479,7 @@ Appendix C Index - User Options
 * org-transclusion-source-fringe:        Faces & fringe bitmap. (line 6)
 
 
-File: docyrbVto.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
+File: doc1CK9Lm.info,  Node: GNU Free Documentation License,  Prev: Index - User Options,  Up: Top
 
 Appendix D GNU Free Documentation License
 *****************************************
@@ -1504,7 +1502,7 @@ Appendix D GNU Free Documentation License
      author and publisher a way to get credit for their work, while not
      being considered responsible for modifications made by others.
 
-     This License is a kind of “copyleft”, which means that derivative
+     This License is a kind of "copyleft", which means that derivative
      works of the document must themselves be free in the same sense.
      It complements the GNU General Public License, which is a copyleft
      license designed for free software.
@@ -1525,18 +1523,18 @@ Appendix D GNU Free Documentation License
      be distributed under the terms of this License.  Such a notice
      grants a world-wide, royalty-free license, unlimited in duration,
      to use that work under the conditions stated herein.  The
-     “Document”, below, refers to any such manual or work.  Any member
-     of the public is a licensee, and is addressed as “you”.  You accept
+     "Document", below, refers to any such manual or work.  Any member
+     of the public is a licensee, and is addressed as "you".  You accept
      the license if you copy, modify or distribute the work in a way
      requiring permission under copyright law.
 
-     A “Modified Version” of the Document means any work containing the
+     A "Modified Version" of the Document means any work containing the
      Document or a portion of it, either copied verbatim, or with
      modifications and/or translated into another language.
 
-     A “Secondary Section” is a named appendix or a front-matter section
+     A "Secondary Section" is a named appendix or a front-matter section
      of the Document that deals exclusively with the relationship of the
-     publishers or authors of the Document to the Document’s overall
+     publishers or authors of the Document to the Document's overall
      subject (or to related matters) and contains nothing that could
      fall directly within that overall subject.  (Thus, if the Document
      is in part a textbook of mathematics, a Secondary Section may not
@@ -1545,7 +1543,7 @@ Appendix D GNU Free Documentation License
      of legal, commercial, philosophical, ethical or political position
      regarding them.
 
-     The “Invariant Sections” are certain Secondary Sections whose
+     The "Invariant Sections" are certain Secondary Sections whose
      titles are designated, as being those of Invariant Sections, in the
      notice that says that the Document is released under this License.
      If a section does not fit the above definition of Secondary then it
@@ -1553,13 +1551,13 @@ Appendix D GNU Free Documentation License
      contain zero Invariant Sections.  If the Document does not identify
      any Invariant Sections then there are none.
 
-     The “Cover Texts” are certain short passages of text that are
+     The "Cover Texts" are certain short passages of text that are
      listed, as Front-Cover Texts or Back-Cover Texts, in the notice
      that says that the Document is released under this License.  A
      Front-Cover Text may be at most 5 words, and a Back-Cover Text may
      be at most 25 words.
 
-     A “Transparent” copy of the Document means a machine-readable copy,
+     A "Transparent" copy of the Document means a machine-readable copy,
      represented in a format whose specification is available to the
      general public, that is suitable for revising the document
      straightforwardly with generic text editors or (for images composed
@@ -1571,7 +1569,7 @@ Appendix D GNU Free Documentation License
      been arranged to thwart or discourage subsequent modification by
      readers is not Transparent.  An image format is not Transparent if
      used for any substantial amount of text.  A copy that is not
-     “Transparent” is called “Opaque”.
+     "Transparent" is called "Opaque".
 
      Examples of suitable formats for Transparent copies include plain
      ASCII without markup, Texinfo input format, LaTeX input format,
@@ -1584,23 +1582,23 @@ Appendix D GNU Free Documentation License
      the machine-generated HTML, PostScript or PDF produced by some word
      processors for output purposes only.
 
-     The “Title Page” means, for a printed book, the title page itself,
+     The "Title Page" means, for a printed book, the title page itself,
      plus such following pages as are needed to hold, legibly, the
      material this License requires to appear in the title page.  For
-     works in formats which do not have any title page as such, “Title
-     Page” means the text near the most prominent appearance of the
-     work’s title, preceding the beginning of the body of the text.
+     works in formats which do not have any title page as such, "Title
+     Page" means the text near the most prominent appearance of the
+     work's title, preceding the beginning of the body of the text.
 
-     The “publisher” means any person or entity that distributes copies
+     The "publisher" means any person or entity that distributes copies
      of the Document to the public.
 
-     A section “Entitled XYZ” means a named subunit of the Document
+     A section "Entitled XYZ" means a named subunit of the Document
      whose title either is precisely XYZ or contains XYZ in parentheses
      following text that translates XYZ in another language.  (Here XYZ
      stands for a specific section name mentioned below, such as
-     “Acknowledgements”, “Dedications”, “Endorsements”, or “History”.)
-     To “Preserve the Title” of such a section when you modify the
-     Document means that it remains a section “Entitled XYZ” according
+     "Acknowledgements", "Dedications", "Endorsements", or "History".)
+     To "Preserve the Title" of such a section when you modify the
+     Document means that it remains a section "Entitled XYZ" according
      to this definition.
 
      The Document may include Warranty Disclaimers next to the notice
@@ -1630,7 +1628,7 @@ Appendix D GNU Free Documentation License
 
      If you publish printed copies (or copies in media that commonly
      have printed covers) of the Document, numbering more than 100, and
-     the Document’s license notice requires Cover Texts, you must
+     the Document's license notice requires Cover Texts, you must
      enclose the copies in covers that carry, clearly and legibly, all
      these Cover Texts: Front-Cover Texts on the front cover, and
      Back-Cover Texts on the back cover.  Both covers must also clearly
@@ -1702,15 +1700,15 @@ Appendix D GNU Free Documentation License
           the Addendum below.
 
        G. Preserve in that license notice the full lists of Invariant
-          Sections and required Cover Texts given in the Document’s
+          Sections and required Cover Texts given in the Document's
           license notice.
 
        H. Include an unaltered copy of this License.
 
-       I. Preserve the section Entitled “History”, Preserve its Title,
+       I. Preserve the section Entitled "History", Preserve its Title,
           and add to it an item stating at least the title, year, new
           authors, and publisher of the Modified Version as given on the
-          Title Page.  If there is no section Entitled “History” in the
+          Title Page.  If there is no section Entitled "History" in the
           Document, create one stating the title, year, authors, and
           publisher of the Document as given on its Title Page, then add
           an item describing the Modified Version as stated in the
@@ -1720,12 +1718,12 @@ Appendix D GNU Free Documentation License
           for public access to a Transparent copy of the Document, and
           likewise the network locations given in the Document for
           previous versions it was based on.  These may be placed in the
-          “History” section.  You may omit a network location for a work
+          "History" section.  You may omit a network location for a work
           that was published at least four years before the Document
           itself, or if the original publisher of the version it refers
           to gives permission.
 
-       K. For any section Entitled “Acknowledgements” or “Dedications”,
+       K. For any section Entitled "Acknowledgements" or "Dedications",
           Preserve the Title of the section, and preserve in the section
           all the substance and tone of each of the contributor
           acknowledgements and/or dedications given therein.
@@ -1734,11 +1732,11 @@ Appendix D GNU Free Documentation License
           in their text and in their titles.  Section numbers or the
           equivalent are not considered part of the section titles.
 
-       M. Delete any section Entitled “Endorsements”.  Such a section
+       M. Delete any section Entitled "Endorsements".  Such a section
           may not be included in the Modified Version.
 
        N. Do not retitle any existing section to be Entitled
-          “Endorsements” or to conflict in title with any Invariant
+          "Endorsements" or to conflict in title with any Invariant
           Section.
 
        O. Preserve any Warranty Disclaimers.
@@ -1747,15 +1745,15 @@ Appendix D GNU Free Documentation License
      appendices that qualify as Secondary Sections and contain no
      material copied from the Document, you may at your option designate
      some or all of these sections as invariant.  To do this, add their
-     titles to the list of Invariant Sections in the Modified Version’s
+     titles to the list of Invariant Sections in the Modified Version's
      license notice.  These titles must be distinct from any other
      section titles.
 
-     You may add a section Entitled “Endorsements”, provided it contains
+     You may add a section Entitled "Endorsements", provided it contains
      nothing but endorsements of your Modified Version by various
-     parties—for example, statements of peer review or that the text has
-     been approved by an organization as the authoritative definition of
-     a standard.
+     parties--for example, statements of peer review or that the text
+     has been approved by an organization as the authoritative
+     definition of a standard.
 
      You may add a passage of up to five words as a Front-Cover Text,
      and a passage of up to 25 words as a Back-Cover Text, to the end of
@@ -1793,10 +1791,10 @@ Appendix D GNU Free Documentation License
      combined work.
 
      In the combination, you must combine any sections Entitled
-     “History” in the various original documents, forming one section
-     Entitled “History”; likewise combine any sections Entitled
-     “Acknowledgements”, and any sections Entitled “Dedications”.  You
-     must delete all sections Entitled “Endorsements.”
+     "History" in the various original documents, forming one section
+     Entitled "History"; likewise combine any sections Entitled
+     "Acknowledgements", and any sections Entitled "Dedications".  You
+     must delete all sections Entitled "Endorsements."
 
   6. COLLECTIONS OF DOCUMENTS
 
@@ -1817,16 +1815,16 @@ Appendix D GNU Free Documentation License
 
      A compilation of the Document or its derivatives with other
      separate and independent documents or works, in or on a volume of a
-     storage or distribution medium, is called an “aggregate” if the
+     storage or distribution medium, is called an "aggregate" if the
      copyright resulting from the compilation is not used to limit the
-     legal rights of the compilation’s users beyond what the individual
+     legal rights of the compilation's users beyond what the individual
      works permit.  When the Document is included in an aggregate, this
      License does not apply to the other works in the aggregate which
      are not themselves derivative works of the Document.
 
      If the Cover Text requirement of section 3 is applicable to these
      copies of the Document, then if the Document is less than one half
-     of the entire aggregate, the Document’s Cover Texts may be placed
+     of the entire aggregate, the Document's Cover Texts may be placed
      on covers that bracket the Document within the aggregate, or the
      electronic equivalent of covers if the Document is in electronic
      form.  Otherwise they must appear on printed covers that bracket
@@ -1848,8 +1846,8 @@ Appendix D GNU Free Documentation License
      this License or a notice or disclaimer, the original version will
      prevail.
 
-     If a section in the Document is Entitled “Acknowledgements”,
-     “Dedications”, or “History”, the requirement (section 4) to
+     If a section in the Document is Entitled "Acknowledgements",
+     "Dedications", or "History", the requirement (section 4) to
      Preserve its Title (section 1) will typically require changing the
      actual title.
 
@@ -1890,7 +1888,7 @@ Appendix D GNU Free Documentation License
 
      Each version of the License is given a distinguishing version
      number.  If the Document specifies that a particular numbered
-     version of this License “or any later version” applies to it, you
+     version of this License "or any later version" applies to it, you
      have the option of following the terms and conditions either of
      that specified version or of any later version that has been
      published (not as a draft) by the Free Software Foundation.  If the
@@ -1898,29 +1896,29 @@ Appendix D GNU Free Documentation License
      choose any version ever published (not as a draft) by the Free
      Software Foundation.  If the Document specifies that a proxy can
      decide which future versions of this License can be used, that
-     proxy’s public statement of acceptance of a version permanently
+     proxy's public statement of acceptance of a version permanently
      authorizes you to choose that version for the Document.
 
   11. RELICENSING
 
-     “Massive Multiauthor Collaboration Site” (or “MMC Site”) means any
+     "Massive Multiauthor Collaboration Site" (or "MMC Site") means any
      World Wide Web server that publishes copyrightable works and also
      provides prominent facilities for anybody to edit those works.  A
      public wiki that anybody can edit is an example of such a server.
-     A “Massive Multiauthor Collaboration” (or “MMC”) contained in the
+     A "Massive Multiauthor Collaboration" (or "MMC") contained in the
      site means any set of copyrightable works thus published on the MMC
      site.
 
-     “CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0
+     "CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0
      license published by Creative Commons Corporation, a not-for-profit
      corporation with a principal place of business in San Francisco,
      California, as well as future copyleft versions of that license
      published by that same organization.
 
-     “Incorporate” means to publish or republish a Document, in whole or
+     "Incorporate" means to publish or republish a Document, in whole or
      in part, as part of another Document.
 
-     An MMC is “eligible for relicensing” if it is licensed under this
+     An MMC is "eligible for relicensing" if it is licensed under this
      License, and if all works that were first published under this
      License somewhere other than this MMC, and subsequently
      incorporated in whole or in part into the MMC, (1) had no cover
@@ -1947,7 +1945,7 @@ notices just after the title page:
        Free Documentation License''.
 
 If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
-replace the “with...Texts.” line with this:
+replace the "with...Texts." line with this:
 
          with the Invariant Sections being LIST THEIR TITLES, with
          the Front-Cover Texts being LIST, and with the Back-Cover Texts
@@ -1965,46 +1963,46 @@ their use in free software.
 
 
 Tag Table:
-Node: Top839
-Ref: whatis1499
-Node: Example Use Cases & Main Features3997
-Node: Installation6768
-Node: Getting Started8506
-Node: Usage12027
-Node: Org-transclusion mode activate and deactivate12656
-Node: Org links supported14816
-Node: Transclude over a network with hyper// http// etc16556
-Node: Control levels of headlines per transclusion17749
-Node: Filter Org elements per transclusion19587
-Ref: Filter Org elements per transclusion-Footnote-123824
-Node: Notes on excluding the headline element23960
-Node: Detach transclusion and copy source buffer24923
-Node: Live-sync edit26196
-Node: Transclude source file into src-block28571
-Node: Transclude range of lines for text and source files29806
-Node: lines property to specify a range of lines30692
-Node: end property to specify a search term to dynamically look for the end of a range32607
-Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source34306
-Node: Transclude HTML content with Pandoc37140
-Node: Chunks of noweb files38242
-Ref: Chunks of noweb files-Footnote-139234
-Node: Extensions39370
-Node: Customizing42523
-Node: Customizable filter to exclude certain Org elements45104
-Node: Include the section before the first headline (Org file only)46122
-Node: Faces & fringe bitmap46790
-Node: Face for the #+transclude keyword47124
-Node: Faces for the fringes next to transcluded region and source region47611
-Node: Keybindings49721
-Node: Known Limitations50871
-Node: Credits53572
-Node: Original idea by John Kitchin53749
-Node: Text-Clone56301
-Node: Contributing56871
-Node: Index - Features57688
-Node: Index - Commands61500
-Node: Index - User Options63470
-Node: GNU Free Documentation License65878
+Node: Top841
+Ref: whatis1501
+Node: Example Use Cases & Main Features3993
+Node: Installation6758
+Node: Getting Started8496
+Node: Usage12009
+Node: Org-transclusion mode activate and deactivate12638
+Node: Org links supported14798
+Node: Transclude over a network with hyper// http// etc16536
+Node: Control levels of headlines per transclusion17725
+Node: Filter Org elements per transclusion19541
+Ref: Filter Org elements per transclusion-Footnote-123760
+Node: Notes on excluding the headline element23802
+Node: Detach transclusion and copy source buffer24763
+Node: Live-sync edit26028
+Node: Transclude source file into src-block28397
+Node: Transclude range of lines for text and source files29630
+Node: lines property to specify a range of lines30512
+Node: end property to specify a search term to dynamically look for the end of a range32409
+Node: thing-at-point or thingatpt property to specify a ``thing'' to transclude from the source34100
+Node: Transclude HTML content with Pandoc36898
+Node: Chunks of noweb files37998
+Ref: Chunks of noweb files-Footnote-138986
+Node: Extensions39028
+Node: Customizing42175
+Node: Customizable filter to exclude certain Org elements44734
+Node: Include the section before the first headline (Org file only)45750
+Node: Faces & fringe bitmap46418
+Node: Face for the #+transclude keyword46752
+Node: Faces for the fringes next to transcluded region and source region47239
+Node: Keybindings49335
+Node: Known Limitations50485
+Node: Credits53163
+Node: Original idea by John Kitchin53340
+Node: Text-Clone55892
+Node: Contributing56462
+Node: Index - Features57275
+Node: Index - Commands61085
+Node: Index - User Options63055
+Node: GNU Free Documentation License65463
 
 End Tag Table
 

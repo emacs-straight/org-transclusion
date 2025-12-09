@@ -131,7 +131,7 @@ or user manual: [online] or Info node `(org-transclusion)Customizing'.
 
   ┌────
   │ (add-to-list 'package-archives
-  │ 	     '("gnu-devel" . "https://elpa.gnu.org/devel/") :append)
+  │              '("gnu-devel" . "https://elpa.gnu.org/devel/") :append)
   └────
 
   Refresh the archive with `M-x package-refresh-contents RET' and you
