@@ -1,2 +1,2 @@
-;; Generated package description from org-transclusion.el  -*- no-byte-compile: t -*-
-(define-package "org-transclusion" "1.4.0.0.20260115.191247" "Transclude text content via links" '((emacs "27.1") (org "9.4")) :commit "6bc151d8d7afe889ce512637771e1329ac67b51d" :authors '(("Noboru Ota" . "me@nobiot.com")) :maintainer '("Noboru Ota" . "me@nobiot.com") :keywords '("org-mode" "transclusion" "writing") :url "https://github.com/nobiot/org-transclusion")
+;; Generated package description from org-transclusion.el  -*- no-byte-compile: t; lexical-binding:t -*-
+(define-package "org-transclusion" "1.4.0.0.20260307.164750" "Transclude text content via links" '((emacs "27.1") (org "9.4")) :commit "f70f5b8cb58ed148c5eec7273b7e9923441b94a3" :authors '(("Noboru Ota" . "me@nobiot.com")) :maintainer '("Noboru Ota" . "me@nobiot.com") :keywords '("org-mode" "transclusion" "writing") :url "https://github.com/nobiot/org-transclusion")
